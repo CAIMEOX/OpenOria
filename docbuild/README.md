@@ -36,6 +36,24 @@ in `docbuild/.lake/build/doc/`, which Git ignores. Publish the contents of that 
 Source links point to the Git commit recorded at build time; commit and push the corresponding
 source before publishing.
 
+## GitHub Pages
+
+The [Docs workflow](../.github/workflows/docs.yml) builds the pinned documentation project
+on pushes and pull requests to `main`. Main-branch runs publish the generated site to
+<https://caimeox.github.io/OpenOria/>. The guide starts at
+<https://caimeox.github.io/OpenOria/OriaDocs.html>.
+To rebuild manually, select **Actions > Docs > Run workflow** on `main`.
+
+Repository setup requires **Settings > Pages > Build and deployment > Source: GitHub Actions**.
+Deployment uses the built-in `GITHUB_TOKEN` and an OIDC identity. No personal token or
+repository secret is needed. The `github-pages` environment controls deployment approvals
+if maintainers add protection rules. Pull-request runs build and upload artifacts; only
+`main` can deploy.
+
+CI caches compiled library dependencies and the root package's Lean artifacts. It rebuilds
+the documentation database and HTML from the current import graph on every run, so removed
+modules leave the search index and navigation.
+
 ## Source layout
 
 - [Oria.Std](../Oria/Std.lean): usage guide, results, context, and argument stages.

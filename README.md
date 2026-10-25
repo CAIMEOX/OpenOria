@@ -84,7 +84,8 @@ Start with the [documentation index](docs/README.md) or browse the
 Runnable examples include [rock-paper-scissors](docs/rock-paper-scissors.md),
 [RoundLedger](docs/language-acceptance.md), and [NBT merge sort](docs/merge-sort.md).
 [StandardLibrary.lean](Oria/Examples/StandardLibrary.lean) contains checked command examples.
-See [reference-site instructions](docbuild/README.md) to build the searchable API documentation.
+Browse the [API reference](https://caimeox.github.io/OpenOria/OriaDocs.html) or
+[build it locally](docbuild/README.md).
 
 ## Compiler and semantics
 

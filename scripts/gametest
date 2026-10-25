@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+root="$PWD"
+java_bin="${ORIA_JAVA:-/opt/homebrew/opt/openjdk@25/bin/java}"
+server="${ORIA_SERVER_JAR:-$root/.lake/minecraft/server-26.3.jar}"
+
+if [[ ! -x "$java_bin" || ! -f "$server" ]]; then
+  echo "Set ORIA_JAVA and ORIA_SERVER_JAR using minecraft-26.3.lock.json." >&2
+  exit 2
+fi
+expected="$(jq -r .server.sha1 minecraft-26.3.lock.json)"
+actual="$(shasum -a 1 "$server" | awk '{print $1}')"
+if [[ "$actual" != "$expected" ]]; then
+  echo "Minecraft server does not match minecraft-26.3.lock.json." >&2
+  exit 2
+fi
+
+lake build datapack-artifact-test persistent-artifact-test register-artifact-test calls-artifact-test nbt-artifact-test standard-command-artifact-test data-compute-artifact-test execute-artifact-test flow-artifact-test runtime-nbt-artifact-test scoreboard-artifact-test
+lake build value-types-artifact-test
+lake build failure-artifact-test
+lake build optimization-artifact-test
+run="$(mktemp -d "$root/.lake/gametest.XXXXXX")"
+mkdir -p "$run/packs"
+cp -R integration/datapack/driver "$run/packs/driver"
+.lake/build/bin/datapack-artifact-test "$run/packs/compiled"
+.lake/build/bin/persistent-artifact-test "$run/packs/persistent"
+.lake/build/bin/value-types-artifact-test "$run/packs/values"
+.lake/build/bin/value-types-artifact-test "$run/packs/values-zero" zero
+.lake/build/bin/failure-artifact-test "$run/packs/failure"
+.lake/build/bin/failure-artifact-test "$run/packs/failure-zero" zero
+.lake/build/bin/failure-artifact-test "$run/packs/failure-unready" unready
+.lake/build/bin/optimization-artifact-test "$run/packs/optimization"
+.lake/build/bin/optimization-artifact-test "$run/packs/optimization-zero" zero
+.lake/build/bin/register-artifact-test "$run/packs/registers"
+.lake/build/bin/register-artifact-test "$run/packs/registers-zero" zero
+.lake/build/bin/calls-artifact-test "$run/packs/calls"
+.lake/build/bin/calls-artifact-test "$run/packs/calls-low" two
+.lake/build/bin/calls-artifact-test "$run/packs/calls-zero" zero
+.lake/build/bin/nbt-artifact-test "$run/packs/driver/data/oria_test/function/nbt-value.mcfunction"
+.lake/build/bin/standard-command-artifact-test "$run/packs/standard"
+.lake/build/bin/data-compute-artifact-test "$run/packs/data-compute"
+.lake/build/bin/execute-artifact-test "$run/packs/execute"
+.lake/build/bin/execute-artifact-test "$run/packs/execute-stack" zero
+.lake/build/bin/flow-artifact-test "$run/packs/recursion" recursion
+.lake/build/bin/flow-artifact-test "$run/packs/recursion-stack" stack
+.lake/build/bin/flow-artifact-test "$run/packs/paths" paths
+.lake/build/bin/runtime-nbt-artifact-test "$run/packs/native-nbt"
+.lake/build/bin/runtime-nbt-artifact-test "$run/packs/native-nbt-registers" registers
+.lake/build/bin/scoreboard-artifact-test "$run/packs/scoreboard"
+echo "GameTest artifacts: $run"
+cd "$run"
+if ! "$java_bin" -DbundlerMainClass=net.minecraft.gametest.Main \
+  -DbundlerRepoDir="$root/.lake/minecraft/bundler-26.3" -jar "$server" \
+  --packs "$run/packs" --tests 'oria_test:datapack' --report "$run/report.xml" \
+  --universe "$run/universe" --verify false --repeatCount 1 >"$run/server.log" 2>&1; then
+  tail -n 40 "$run/server.log"
+  exit 1
+fi
+if rg -q 'Failed to load function' "$run/server.log"; then
+  rg 'Failed to load function' "$run/server.log"
+  exit 1
+fi
+tail -n 12 "$run/server.log"

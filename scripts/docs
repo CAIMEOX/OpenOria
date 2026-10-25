@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/../docbuild"
+export DISABLE_EQUATIONS=1
+
+lake build +OriaDocs:docInfo
+# Render the updated database explicitly: this doc-gen4 release can reuse a stale HTML marker.
+lake exe doc-gen4 fromDb --build .lake/build --manifest .lake/build/doc-manifest.json \
+  .lake/build/api-docs.db OriaDocs Init Std Lake Lean

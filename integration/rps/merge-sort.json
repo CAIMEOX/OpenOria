@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:function",
+  "function": "rps_test:game",
+  "environment": "minecraft:default",
+  "structure": "mucmd_test:fib_5",
+  "max_ticks": 2000,
+  "setup_ticks": 3,
+  "required": true
+}

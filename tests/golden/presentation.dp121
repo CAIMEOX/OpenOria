@@ -1,0 +1,92 @@
+data/feedback/function/__oria/m0/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run tag @a list
+
+data/feedback/function/__oria/m0/b2.mcfunction
+data modify storage feedback:runtime "macro"."p0" set from storage feedback:runtime "stack"[-1]."locals"[0]
+
+data/feedback/function/__oria/m1/b0.mcfunction
+tag @a add round.active
+
+data/feedback/function/__oria/m11/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run stopsound @a
+
+data/feedback/function/__oria/m12/b0.mcfunction
+data modify storage feedback:runtime "macro"."p0" set from storage feedback:runtime "stack"[-1]."locals"[0]
+
+data/feedback/function/__oria/m12/b2/i0/macro.mcfunction
+$return run playsound feedback:cue ui @a ~0 ~0 ~0 1 $(p0) 0
+
+data/feedback/function/__oria/m13/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run title @a reset
+
+data/feedback/function/__oria/m14/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run title @a title {"text":"Round one"}
+
+data/feedback/function/__oria/m15/b0.mcfunction
+title @a title {"text":"Ready"}
+
+data/feedback/function/__oria/m16/b0.mcfunction
+execute store success score #s2 feedback.oria run tag @a add round.active
+
+data/feedback/function/__oria/m17/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run stopsound @a ui
+
+data/feedback/function/__oria/m18/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run tag @a[tag=feedback.absent] add round.active
+
+data/feedback/function/__oria/m19/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run playsound feedback:cue ui @a ~0 ~0 ~0 1 1 0.25
+
+data/feedback/function/__oria/m2/b0.mcfunction
+data modify storage feedback:runtime "macro"."p0" set from storage feedback:runtime "stack"[-1]."locals"[0]
+
+data/feedback/function/__oria/m2/b2/i0/macro.mcfunction
+$return run title @a actionbar {"translate":"%s","with":[$(p0)]}
+
+data/feedback/function/__oria/m20/b0.mcfunction
+data modify storage feedback:runtime "macro"."p0" set from storage feedback:runtime "stack"[-1]."locals"[0]
+
+data/feedback/function/__oria/m20/b2/i0/macro.mcfunction
+$return run title @a times 0.25s $(p0)t 0.001000000000000000020816681711721685132943093776702880859375d
+
+data/feedback/function/__oria/m21/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run tag @s add round.winner
+
+data/feedback/function/__oria/m22/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run tag @s add round.active
+
+data/feedback/function/__oria/m23/b0.mcfunction
+data modify storage feedback:runtime "macro"."p0" set from storage feedback:runtime "stack"[-1]."locals"[0]
+
+data/feedback/function/__oria/m23/b2/i0/macro.mcfunction
+$return run playsound feedback:cue ui @a ~$(p0) ~0.25 ~0 1 1 0
+
+data/feedback/function/__oria/m24/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run playsound feedback:cue ui @a ~0 ~0 ~0 1 1 0
+
+data/feedback/function/__oria/m25/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run tag @a remove round.active
+
+data/feedback/function/__oria/m26/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run playsound feedback:cue master @a[tag=feedback.absent] ~0 ~0 ~0 1 1 0
+
+data/feedback/function/__oria/m3/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run stopsound @a * feedback:cue
+
+data/feedback/function/__oria/m4/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run title @s title {"text":"Ready","color":"gold","bold":1b}
+
+data/feedback/function/__oria/m5/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run title @a subtitle {"text":"Choose a move"}
+
+data/feedback/function/__oria/m6/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run title @a[tag=feedback.absent] title {"text":"Absent"}
+
+data/feedback/function/__oria/m7/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run title @a clear
+
+data/feedback/function/__oria/m8/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run stopsound @a ui feedback:cue
+
+data/feedback/function/__oria/m9/b0.mcfunction
+execute store success score #s2 feedback.oria run execute store result score #s3 feedback.oria run tag @a add round.active

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+lake build Oria.Std Oria.Std.DP121 Oria.Std.Compute.Number Oria.Examples.StandardLibrary Oria.Examples.RockPaperScissors Oria.Examples.MergeSort Oria.Examples.Elaboration Oria.Examples.GlobalNbt
+
+# Re-elaborate docstrings and their examples even when Lake reuses compiled modules.
+while IFS= read -r source; do
+  lake env lean -Dlinter.missingDocs=true -DwarningAsError=true "$source"
+done < <(rg --files Oria/Std Oria/Std.lean Oria/Examples/StandardLibrary.lean Oria/Examples/RockPaperScissors.lean Oria/Examples/MergeSort.lean Oria/Examples/Elaboration.lean Oria/Examples/GlobalNbt.lean -g '*.lean' | sort)

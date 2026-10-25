@@ -1,0 +1,5 @@
+execute store result storage oria:runtime "macro"."p0" int 1 run scoreboard players get #r0 oria.vm
+scoreboard players set #r0 oria.vm 0
+execute store success score #r0 oria.vm run function oria:__oria/m1/b0/i0/macro with storage oria:runtime "macro"
+scoreboard players operation #ret0 oria.vm = #r0 oria.vm
+return 0

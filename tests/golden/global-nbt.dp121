@@ -1,0 +1,70 @@
+data/global_test/function/__oria/globals/check.mcfunction
+data modify storage global_test:runtime "schema_check" set from storage global_test:persistent "globals"
+execute store success score #global_ok global_test.oria run data modify storage global_test:runtime "schema_check" set value "[{\"path\":\"\\\"buffer\\\"\",\"schema\":{\"record\":{\"fields\":[[\"count\",{\"atom\":{\"tag\":\"int\"}}],[\"values\",{\"list\":{\"element\":{\"atom\":{\"tag\":\"int\"}}}}],[\"label\",{\"atom\":{\"tag\":\"string\"}}]]}},\"storage\":\"global_test:state\"}]"
+data remove storage global_test:runtime "schema_check"
+execute unless score #global_ok global_test.oria matches 0 run scoreboard players set #panic global_test.oria 1
+execute unless score #global_ok global_test.oria matches 0 run return fail
+execute store success score #global_ok global_test.oria run data get storage global_test:state "buffer"
+execute unless score #global_ok global_test.oria matches 1 run scoreboard players set #panic global_test.oria 1
+execute unless score #global_ok global_test.oria matches 1 run return fail
+scoreboard players set #ready global_test.oria 1
+return 0
+
+data/global_test/function/__oria/globals/load.mcfunction
+execute unless score #ready global_test.oria matches 1 run return fail
+scoreboard players set #panic global_test.oria 0
+scoreboard players set #ready global_test.oria 0
+execute store success score #global_ok global_test.oria run data get storage global_test:persistent "globals"
+execute if score #global_ok global_test.oria matches 1 run return run function global_test:__oria/globals/check
+data remove storage global_test:state "buffer"
+execute store success score #global_ok global_test.oria run data modify storage global_test:state "buffer" set value {"count":0,"values":[10,20],"label":"initial"}
+execute unless score #global_ok global_test.oria matches 1 run scoreboard players set #panic global_test.oria 1
+execute unless score #global_ok global_test.oria matches 1 run return fail
+data modify storage global_test:persistent "globals" set value "[{\"path\":\"\\\"buffer\\\"\",\"schema\":{\"record\":{\"fields\":[[\"count\",{\"atom\":{\"tag\":\"int\"}}],[\"values\",{\"list\":{\"element\":{\"atom\":{\"tag\":\"int\"}}}}],[\"label\",{\"atom\":{\"tag\":\"string\"}}]]}},\"storage\":\"global_test:state\"}]"
+scoreboard players set #ready global_test.oria 1
+return 0
+
+data/global_test/function/__oria/load.mcfunction
+execute if score #phase global_test.oria matches 1.. run return fail
+scoreboard objectives add global_test.oria dummy
+scoreboard players set #phase global_test.oria 4
+data modify storage global_test:runtime "macro" set value {}
+scoreboard players set #ready global_test.oria 1
+function global_test:__oria/globals/load
+scoreboard players set #phase global_test.oria 0
+
+data/global_test/function/__oria/m0/b0.mcfunction
+scoreboard players set #r1 global_test.oria 0
+scoreboard players set #r0 global_test.oria 0
+execute store success score #r1 global_test.oria run execute store result score #r0 global_test.oria run data get storage global_test:state "buffer"."count" 1
+execute unless score #r1 global_test.oria matches 1 run return run function global_test:__oria/m0/b3
+scoreboard players add #r0 global_test.oria 1
+scoreboard players set #s2 global_test.oria 0
+execute store success score #s2 global_test.oria run data modify storage global_test:state "buffer"."count" set compute default integer {"type":"minecraft:score","target":{"type":"minecraft:fixed","name":"#r0"},"score":"global_test.oria"}
+scoreboard players operation #r0 global_test.oria = #s2 global_test.oria
+execute unless score #r0 global_test.oria matches 1 run return run function global_test:__oria/m0/b3
+scoreboard players set #ret0 global_test.oria 1
+return 0
+
+data/global_test/function/__oria/m0/b3.mcfunction
+scoreboard players set #ret0 global_test.oria 0
+return 0
+
+data/global_test/function/increment.mcfunction
+execute if score #phase global_test.oria matches 1.. run return fail
+execute unless score #ready global_test.oria matches 1 run return fail
+scoreboard players set #panic global_test.oria 0
+scoreboard players set #phase global_test.oria 1
+function global_test:__oria/m0/b0
+scoreboard players operation #entry_success global_test.oria = #ret0 global_test.oria
+data modify storage global_test:runtime "macro" set value {}
+scoreboard players set #phase global_test.oria 0
+execute if score #panic global_test.oria matches 1 run return fail
+execute unless score #entry_success global_test.oria matches 1 run return fail
+return 0
+
+data/minecraft/tags/function/load.json
+{"values": ["global_test:__oria/load"], "replace": false}
+
+pack.mcmeta
+{"pack": {"min_format": [121, 0], "max_format": [121, 0], "description": ""}}

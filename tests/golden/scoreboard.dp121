@@ -1,0 +1,57 @@
+data/sbtest/function/__oria/load.mcfunction
+scoreboard objectives add sbtest.oria dummy
+
+data/sbtest/function/__oria/m0/b0.mcfunction
+trigger sbtest.choice
+
+data/sbtest/function/__oria/m1/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard objectives remove sbtest.temporary
+
+data/sbtest/function/__oria/m1/b3.mcfunction
+data modify storage sbtest:runtime "macro"."p0" set from storage sbtest:runtime "stack"[-1]."locals"[0]
+
+data/sbtest/function/__oria/m11/b0.mcfunction
+execute store success score #s2 sbtest.oria run trigger sbtest.choice
+
+data/sbtest/function/__oria/m12/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard objectives add sbtest.temporary trigger
+
+data/sbtest/function/__oria/m13/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run trigger sbtest.choice
+
+data/sbtest/function/__oria/m15/b0.mcfunction
+data modify storage sbtest:runtime "macro"."p0" set from storage sbtest:runtime "stack"[-1]."locals"[0]
+
+data/sbtest/function/__oria/m15/b0/i0/macro.mcfunction
+$return run trigger sbtest.choice set $(p0)
+
+data/sbtest/function/__oria/m16/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard players reset #input
+
+data/sbtest/function/__oria/m17/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard players enable #input sbtest.choice
+
+data/sbtest/function/__oria/m2/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard objectives add sbtest.temporary dummy
+
+data/sbtest/function/__oria/m4/b0.mcfunction
+data modify storage sbtest:runtime "macro"."p0" set from storage sbtest:runtime "stack"[-1]."locals"[0]
+
+data/sbtest/function/__oria/m4/b0/i0/macro.mcfunction
+$return run trigger sbtest.choice add $(p0)
+
+data/sbtest/function/__oria/m5/b0.mcfunction
+scoreboard objectives add sbtest.choice trigger
+scoreboard objectives add sbtest.other dummy
+
+data/sbtest/function/__oria/m6/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard players enable #input sbtest.other
+
+data/sbtest/function/__oria/m7/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard players reset #input sbtest.choice
+
+data/sbtest/function/__oria/m8/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard players reset #input sbtest.absent
+
+data/sbtest/function/__oria/m9/b0.mcfunction
+execute store success score #s2 sbtest.oria run execute store result score #s3 sbtest.oria run scoreboard players enable #input sbtest.temporary

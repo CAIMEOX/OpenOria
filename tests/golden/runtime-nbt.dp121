@@ -1,0 +1,226 @@
+data/native_test/function/__oria/m0/b0/i1/nbt/input.mcfunction
+$execute if score #read_space native_test.oria matches 0 run data modify storage native_test:runtime "nbt_input" set from storage native_test:runtime "arena"[$(p0)]."value"
+$execute if score #read_space native_test.oria matches 1 run data modify storage native_test:runtime "nbt_input" set from storage native_test:persistent "slots"[$(p0)]."value"
+
+data/native_test/function/__oria/m2/b0/i1/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[],"value":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run function native_test:__oria/m2/b0/i1/nbt/count
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+execute if score #nbt_count native_test.oria matches 1.. run scoreboard players set #nbt_ok native_test.oria 0
+execute if score #nbt_count native_test.oria matches 1.. run execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" append from storage native_test:data "tasks"[{"owner":"Ada"}]."n"
+execute if score #nbt_count native_test.oria matches 1.. run execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b0/i1/nbt/count.mcfunction
+execute store result score #nbt_count native_test.oria run execute if data storage native_test:data "tasks"[{"owner":"Ada"}]."n"
+return 1
+
+data/native_test/function/__oria/m2/b13/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data "exact"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" set from storage native_test:data "exact"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b15/i0/macro/arg0.mcfunction
+$execute if score #read_space native_test.oria matches 0 run data modify storage native_test:runtime "macro"."p0" set from storage native_test:runtime "arena"[$(p0)]."value"
+$execute if score #read_space native_test.oria matches 1 run data modify storage native_test:runtime "macro"."p0" set from storage native_test:persistent "slots"[$(p0)]."value"
+
+data/native_test/function/__oria/m2/b16/i2/nbt.mcfunction
+data remove storage native_test:runtime "draft"
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[],"value":"same"}
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b2/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[],"value":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run function native_test:__oria/m2/b2/i0/nbt/count
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+execute if score #nbt_count native_test.oria matches 1.. run scoreboard players set #nbt_ok native_test.oria 0
+execute if score #nbt_count native_test.oria matches 1.. run execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" append from storage native_test:data "missing"
+execute if score #nbt_count native_test.oria matches 1.. run execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b2/i0/nbt/count.mcfunction
+execute store result score #nbt_count native_test.oria run execute if data storage native_test:data "missing"
+return 1
+
+data/native_test/function/__oria/m2/b4/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[],"value":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run function native_test:__oria/m2/b4/i0/nbt/count
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+execute if score #nbt_count native_test.oria matches 1.. run scoreboard players set #nbt_ok native_test.oria 0
+execute if score #nbt_count native_test.oria matches 1.. run execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" append from storage native_test:data "tasks"
+execute if score #nbt_count native_test.oria matches 1.. run execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b4/i0/nbt/count.mcfunction
+execute store result score #nbt_count native_test.oria run execute if data storage native_test:data "tasks"
+return 1
+
+data/native_test/function/__oria/m2/b6/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data "tasks"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" set from storage native_test:data "tasks"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b8/i0/nbt.mcfunction
+data remove storage native_test:runtime "nbt_input"
+execute store result score #s0 native_test.oria run data get storage native_test:runtime "stack"[-1]."locals"[0]
+scoreboard players set #read_space native_test.oria 0
+execute if score #s0 native_test.oria matches 1.. run scoreboard players set #read_space native_test.oria 1
+scoreboard players set #read_index native_test.oria -1
+execute if score #read_space native_test.oria matches 0 run scoreboard players operation #read_index native_test.oria -= #s0 native_test.oria
+execute if score #read_space native_test.oria matches 1 run scoreboard players operation #read_index native_test.oria += #s0 native_test.oria
+execute store result storage native_test:runtime "memory_arg"."p0" int 1 run scoreboard players get #read_index native_test.oria
+function native_test:__oria/m0/b0/i1/nbt/input with storage native_test:runtime "memory_arg"
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+data modify storage native_test:runtime "macro"."p0" set from storage native_test:runtime "stack"[-1]."locals"[1]
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run function native_test:__oria/m2/b8/i0/nbt/check with storage native_test:runtime "macro"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+data modify storage native_test:runtime "macro"."p0" set from storage native_test:runtime "stack"[-1]."locals"[1]
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run function native_test:__oria/m2/b8/i0/nbt/copy with storage native_test:runtime "macro"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m2/b8/i0/nbt/check.mcfunction
+$return run data get storage native_test:runtime "nbt_input"[$(p0)]
+
+data/native_test/function/__oria/m2/b8/i0/nbt/copy.mcfunction
+$return run data modify storage native_test:runtime "draft"."value" set from storage native_test:runtime "nbt_input"[$(p0)]
+
+data/native_test/function/__oria/m2/b9/i0/nbt.mcfunction
+data remove storage native_test:runtime "nbt_input"
+execute store result score #s0 native_test.oria run data get storage native_test:runtime "stack"[-1]."locals"[0]
+scoreboard players set #read_space native_test.oria 0
+execute if score #s0 native_test.oria matches 1.. run scoreboard players set #read_space native_test.oria 1
+scoreboard players set #read_index native_test.oria -1
+execute if score #read_space native_test.oria matches 0 run scoreboard players operation #read_index native_test.oria -= #s0 native_test.oria
+execute if score #read_space native_test.oria matches 1 run scoreboard players operation #read_index native_test.oria += #s0 native_test.oria
+execute store result storage native_test:runtime "memory_arg"."p0" int 1 run scoreboard players get #read_index native_test.oria
+function native_test:__oria/m0/b0/i1/nbt/input with storage native_test:runtime "memory_arg"
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:runtime "nbt_input"."n"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" set from storage native_test:runtime "nbt_input"."n"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m5/b0/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data "tasks"[]
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" set from storage native_test:data "tasks"[]
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+return 0
+
+data/native_test/function/__oria/m6/b0/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data "missing"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" set from storage native_test:data "missing"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+return 0
+
+data/native_test/function/__oria/m7/b0/i0/nbt.mcfunction
+data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[]}
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data get storage native_test:data "exact"."text"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft"."value" set from storage native_test:data "exact"."text"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria
+
+data/native_test/function/__oria/m8/b0/i0/nbt.mcfunction
+data remove storage native_test:runtime "draft"
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "draft" set value {"tag":0,"payload":[],"value":{"message":"initial"}}
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players set #nbt_ok native_test.oria 0
+execute store success score #nbt_ok native_test.oria run data modify storage native_test:runtime "arena" append from storage native_test:runtime "draft"
+execute unless score #nbt_ok native_test.oria matches 1 run return fail
+scoreboard players add #heap_count native_test.oria 1
+scoreboard players set #nbt_result native_test.oria 0
+scoreboard players operation #nbt_result native_test.oria -= #heap_count native_test.oria
+return run scoreboard players get #nbt_result native_test.oria

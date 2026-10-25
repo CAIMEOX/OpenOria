@@ -1,0 +1,77 @@
+data/entitytest/function/__oria/m0/b0.mcfunction
+summon minecraft:pig ~0 ~0 ~0 {"Tags":["entitytest.effects"],"NoAI":1b}
+summon minecraft:pig ~0 ~0 ~0 {"Tags":["entitytest.effects"],"NoAI":1b}
+summon minecraft:marker ~0 ~0 ~0 {"Tags":["entitytest.effects"]}
+
+data/entitytest/function/__oria/m1/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect give @e[tag=entitytest.effects] minecraft:speed
+
+data/entitytest/function/__oria/m1/b3.mcfunction
+data modify storage entitytest:runtime "macro"."p0" set from storage entitytest:runtime "stack"[-1]."locals"[0]
+
+data/entitytest/function/__oria/m11/b0.mcfunction
+data modify storage entitytest:runtime "macro"."p0" set from storage entitytest:runtime "stack"[-1]."locals"[1]
+data modify storage entitytest:runtime "macro"."p1" set from storage entitytest:runtime "stack"[-1]."locals"[0]
+
+data/entitytest/function/__oria/m11/b0/i0/macro.mcfunction
+$return run summon minecraft:pig ~$(p0) ~0.25 ~-0.5 {"Age":$(p1),"Tags":["entitytest.dynamic"]}
+
+data/entitytest/function/__oria/m13/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect clear @e[tag=entitytest.effects] minecraft:speed
+
+data/entitytest/function/__oria/m14/b0/i1/macro.mcfunction
+$return run summon minecraft:pig ~0 ~0 ~0 $(p0)
+
+data/entitytest/function/__oria/m14/b0/i1/macro/arg0.mcfunction
+$execute if score #read_space entitytest.oria matches 0 run data modify storage entitytest:runtime "macro"."p0" set from storage entitytest:runtime "arena"[$(p0)]."value"
+$execute if score #read_space entitytest.oria matches 1 run data modify storage entitytest:runtime "macro"."p0" set from storage entitytest:persistent "slots"[$(p0)]."value"
+
+data/entitytest/function/__oria/m15/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run summon minecraft:marker
+
+data/entitytest/function/__oria/m17/b0.mcfunction
+data modify storage entitytest:runtime "macro"."p0" set from storage entitytest:runtime "stack"[-1]."locals"[1]
+data modify storage entitytest:runtime "macro"."p1" set from storage entitytest:runtime "stack"[-1]."locals"[0]
+
+data/entitytest/function/__oria/m17/b0/i0/macro.mcfunction
+$return run effect give @e[tag=entitytest.effects] minecraft:weakness $(p0) $(p1) true
+
+data/entitytest/function/__oria/m18/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run kill @s
+
+data/entitytest/function/__oria/m19/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run summon minecraft:marker ~0 ~0 ~0 {"UUID":[I;1329744193,1548427776,-2147479999,1],"Tags":["entitytest.uuid"]}
+
+data/entitytest/function/__oria/m2/b0.mcfunction
+summon minecraft:marker ~0 ~0 ~0 {"Tags":["entitytest.temporary"]}
+summon minecraft:marker ~0 ~0 ~0 {"Tags":["entitytest.temporary"]}
+
+data/entitytest/function/__oria/m20/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run summon minecraft:pig ~0 ~0 ~0
+
+data/entitytest/function/__oria/m21/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run kill @e[tag=entitytest.temporary]
+
+data/entitytest/function/__oria/m22/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect give @e[tag=entitytest.effects] minecraft:instant_health 5 0 false
+
+data/entitytest/function/__oria/m23/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect give @e[tag=entitytest.effects] minecraft:instant_health
+
+data/entitytest/function/__oria/m4/b0.mcfunction
+execute store success score #s2 entitytest.oria run kill @e[tag=entitytest.temporary]
+
+data/entitytest/function/__oria/m5/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect clear @e[tag=entitytest.effects]
+
+data/entitytest/function/__oria/m6/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run summon minecraft:pig ~0 ~0 ~0 {}
+
+data/entitytest/function/__oria/m7/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect give @e[tag=entitytest.effects] minecraft:night_vision infinite 0 false
+
+data/entitytest/function/__oria/m8/b0.mcfunction
+execute store success score #s2 entitytest.oria run execute store result score #s3 entitytest.oria run effect give @s minecraft:speed
+
+data/entitytest/function/__oria/m9/b0.mcfunction
+kill @e[tag=entitytest.temporary]

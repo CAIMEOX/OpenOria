@@ -1,0 +1,205 @@
+data/stdtest/function/__oria/m1/b0.mcfunction
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run random roll 1..6
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m1/b2
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m1/b1/i0/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m10/b0.mcfunction
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run scoreboard players get #seed stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m1/b2
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m10/b1/i0/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m10/b1/i0/macro.mcfunction
+$return run random reset stdtest:sequence $(p0) false false
+
+data/stdtest/function/__oria/m11/b0.mcfunction
+data modify storage stdtest:runtime "stack_draft" set value {"locals":[0,0],"saved":[],"result":[]}
+data modify storage stdtest:runtime "stack" append from storage stdtest:runtime "stack_draft"
+data remove storage stdtest:runtime "stack_draft"
+function stdtest:__oria/m12/b0
+execute store result storage stdtest:runtime "stack"[-2]."locals"[0] int 1 run scoreboard players get #ret0 stdtest.oria
+data remove storage stdtest:runtime "stack"[-1]
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m11/b0/i1/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m12/b0.mcfunction
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run tellraw @a {"text":"Plain \"text\" \u0024(literal)"}
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m12/b4
+data modify storage stdtest:runtime "draft" set value {"tag":1,"payload":[0]}
+data modify storage stdtest:runtime "draft"."payload"[0] set from storage stdtest:runtime "stack"[-1]."locals"[0]
+data modify storage stdtest:runtime "arena" append from storage stdtest:runtime "draft"
+scoreboard players add #heap_count stdtest.oria 1
+scoreboard players set #heap_index stdtest.oria 0
+scoreboard players operation #heap_index stdtest.oria -= #heap_count stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #heap_index stdtest.oria
+return run function stdtest:__oria/m12/b1
+
+data/stdtest/function/__oria/m14/b0.mcfunction
+scoreboard players set #s2 stdtest.oria 0
+execute store success score #s2 stdtest.oria run random value 1
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s2 stdtest.oria
+scoreboard players operation #s0 stdtest.oria = #s2 stdtest.oria
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m1/b2
+scoreboard players set #continued stdtest.oria 1
+return 0
+
+data/stdtest/function/__oria/m15/b0.mcfunction
+random reset * 71 false false
+return 0
+
+data/stdtest/function/__oria/m17/b0.mcfunction
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run scoreboard players get #min stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m1/b2
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run scoreboard players get #max stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[2] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[2]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m1/b2
+data modify storage stdtest:runtime "stack_draft" set value {"locals":[0,0],"saved":[],"result":[]}
+data modify storage stdtest:runtime "stack" append from storage stdtest:runtime "stack_draft"
+data remove storage stdtest:runtime "stack_draft"
+data modify storage stdtest:runtime "stack"[-1]."locals"[1] set from storage stdtest:runtime "stack"[-2]."locals"[0]
+data modify storage stdtest:runtime "stack"[-1]."locals"[0] set from storage stdtest:runtime "stack"[-2]."locals"[1]
+function stdtest:__oria/m18/b0
+execute store result storage stdtest:runtime "stack"[-2]."locals"[1] int 1 run scoreboard players get #ret0 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-2]."locals"[0] int 1 run scoreboard players get #ret1 stdtest.oria
+data remove storage stdtest:runtime "stack"[-1]
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m1/b2
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m17/b3/i0/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m18/b0.mcfunction
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[1]
+data modify storage stdtest:runtime "macro"."p1" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run function stdtest:__oria/m18/b0/i0/macro with storage stdtest:runtime "macro"
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m18/b2
+scoreboard players set #ret0 stdtest.oria 1
+execute store result score #ret1 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[0]
+return 0
+
+data/stdtest/function/__oria/m18/b0/i0/macro.mcfunction
+$return run random value $(p0)..$(p1) stdtest:sequence
+
+data/stdtest/function/__oria/m19/b0.mcfunction
+dialog show @a minecraft:server_links
+dialog show @a {"type":"minecraft:confirmation","title":"Continue?","yes":{"label":"Yes"},"no":{"label":"No"}}
+dialog show @a {"type":"minecraft:multi_action","title":"Settings","inputs":[{"type":"minecraft:text","key":"name","label":"Name"}],"actions":[{"label":"Done"}],"columns":1}
+data modify storage stdtest:runtime "stack_draft" set value {"locals":[0],"saved":[],"result":[]}
+data modify storage stdtest:runtime "stack" append from storage stdtest:runtime "stack_draft"
+data remove storage stdtest:runtime "stack_draft"
+data modify storage stdtest:runtime "stack"[-1]."locals"[0] set value 12
+function stdtest:__oria/m20/b0
+data remove storage stdtest:runtime "stack"[-1]
+dialog clear @a
+scoreboard players set #s2 stdtest.oria 0
+scoreboard players set #s3 stdtest.oria 0
+execute store success score #s2 stdtest.oria run execute store result score #s3 stdtest.oria run dialog show @a {"type":"minecraft:notice","title":"Notice","body":{"type":"minecraft:plain_message","contents":"Hello \u0024(literal)"}}
+execute store result storage stdtest:runtime "stack"[-1]."locals"[1] int 1 run scoreboard players get #s2 stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s3 stdtest.oria
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[1]
+execute unless score #s0 stdtest.oria matches 1 run return run function stdtest:__oria/m19/b4
+data modify storage stdtest:runtime "draft" set value {"tag":1,"payload":[0]}
+data modify storage stdtest:runtime "draft"."payload"[0] set from storage stdtest:runtime "stack"[-1]."locals"[0]
+data modify storage stdtest:runtime "arena" append from storage stdtest:runtime "draft"
+scoreboard players add #heap_count stdtest.oria 1
+scoreboard players set #heap_index stdtest.oria 0
+scoreboard players operation #heap_index stdtest.oria -= #heap_count stdtest.oria
+execute store result storage stdtest:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #heap_index stdtest.oria
+return run function stdtest:__oria/m19/b1
+
+data/stdtest/function/__oria/m19/b2.mcfunction
+scoreboard players set #dialog stdtest.oria -1
+return 0
+
+data/stdtest/function/__oria/m19/b3.mcfunction
+execute store result score #s0 stdtest.oria run data get storage stdtest:runtime "stack"[-1]."locals"[0]
+scoreboard players set #heap_index stdtest.oria -1
+scoreboard players operation #heap_index stdtest.oria -= #s0 stdtest.oria
+execute store result storage stdtest:runtime "heap_arg"."p0" int 1 run scoreboard players get #heap_index stdtest.oria
+function stdtest:__oria/m12/b3/i0/read with storage stdtest:runtime "heap_arg"
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m19/b3/i1/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m19/b3/i1/macro.mcfunction
+$return run scoreboard players set #dialog stdtest.oria $(p0)
+
+data/stdtest/function/__oria/m20/b0.mcfunction
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m20/b0/i0/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m20/b0/i0/macro.mcfunction
+$return run dialog show @a {"type":"minecraft:notice","title":"Round","body":{"type":"minecraft:plain_message","contents":{"translate":"%s","with":[$(p0)]}}}
+
+data/stdtest/function/__oria/m21/b0.mcfunction
+random value 1
+scoreboard players set #continued stdtest.oria 2
+return 0
+
+data/stdtest/function/__oria/m22/b0.mcfunction
+tellraw @a [{"text":"Styled","color":"gold","bold":1b,"italic":0b,"click_event":{"action":"copy_to_clipboard","value":"copied \u0024(literal)"},"hover_event":{"action":"show_text","value":{"text":"Details","color":"gray"}}},{"translate":"chat.type.text","with":["Server","Message"]},{"score":{"name":"#out","objective":"stdtest.oria"}},{"selector":"@a"},{"nbt":"message","storage":"stdtest:messages","interpret":1b}]
+tellraw @a {"translate":"demo.key","with":[3],"fallback":"value %s"}
+tellraw @a {"score":{"name":"#out","objective":"stdtest.oria"}}
+tellraw @a {"selector":"@a"}
+tellraw @a {"nbt":"\"message\"","storage":"stdtest:messages","interpret":1b}
+tellraw @a {"nbt":"\"CustomName\"","entity":"@s","interpret":0b}
+tellraw @a {"nbt":"\"CustomName\"","block":"~ ~ ~","interpret":0b}
+tellraw @a[name="round one"] {"text":"Selected"}
+scoreboard players set #rich stdtest.oria 1
+return 0
+
+data/stdtest/function/__oria/m3/b0.mcfunction
+data modify storage stdtest:runtime "macro"."p0" set from storage stdtest:runtime "stack"[-1]."locals"[0]
+function stdtest:__oria/m3/b0/i0/macro with storage stdtest:runtime "macro"
+return 0
+
+data/stdtest/function/__oria/m3/b0/i0/macro.mcfunction
+$return run tellraw @a {"translate":"%s","with":[$(p0)]}
+
+data/stdtest/function/__oria/m4/b0.mcfunction
+random reset *
+return 0
+
+data/stdtest/function/__oria/m5/b0.mcfunction
+tellraw @a {"text":"Standard commands loaded"}
+dialog show @a {"type":"minecraft:notice","title":"Loaded","body":{"type":"minecraft:plain_message","contents":"Standard command acceptance"}}
+scoreboard players set #loaded stdtest.oria 1
+return 0
+
+data/stdtest/function/__oria/m6/b0.mcfunction
+random reset stdtest:sequence
+return 0

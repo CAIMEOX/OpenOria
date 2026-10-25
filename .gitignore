@@ -1,0 +1,5 @@
+/.lake
+/docbuild/.lake
+/integration/lake/.lake
+/integration/lake/lake-manifest.json
+output

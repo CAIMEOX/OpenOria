@@ -1,0 +1,18 @@
+name = "oria-docs"
+reservoir = false
+version = "1.0.0"
+packagesDir = "../.lake/packages"
+defaultTargets = ["OriaDocs"]
+
+[[lean_lib]]
+name = "OriaDocs"
+
+[[require]]
+scope = "leanprover"
+name = "doc-gen4"
+git = "https://github.com/leanprover/doc-gen4.git"
+rev = "v4.31.0-rc2"
+
+[[require]]
+name = "oria"
+path = "../"

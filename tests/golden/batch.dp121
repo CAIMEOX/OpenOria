@@ -1,0 +1,1354 @@
+data/batch/function/__oria/m0/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace entity @a weapon.offhand with minecraft:diamond 2
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m0/b2.mcfunction
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+
+data/batch/function/__oria/m1/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m1/b2/i0/macro.mcfunction
+$return run loot replace block ~0 ~0 ~0 container.0 $(p0) loot batch:fixed
+
+data/batch/function/__oria/m10/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar players
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m100/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace block ~0 ~0 ~0 container.1 from entity @s weapon.mainhand {"type":"minecraft:set_count","count":2,"add":1b}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m101/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives setdisplay below_name batch.points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m102/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @s *[minecraft:custom_name="Prize"|!minecraft:food] 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m103/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~3 ~0 ~0 ~5 ~0 ~0 minecraft:oak_planks keep
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m104/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement grant @a only batch:root
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m105/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld pause
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m106/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red seeFriendlyInvisibles false
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m107/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard players display name @a batch.points {"text":"Player"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m108/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run swing @s mainhand whack 6t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m109/b0.mcfunction
+execute store result block ~0 ~0 ~0 "TransferCooldown" int 1 run function batch:__oria/m109/b0/i0/body
+
+data/batch/function/__oria/m11/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m11/b2/i0/macro.mcfunction
+$return run item modify block ~0 ~0 ~0 container.0 {"type":"minecraft:set_count","count":$(p0),"add":0b}
+
+data/batch/function/__oria/m111/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run posteffect list @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m112/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar visible false
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m113/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m113/b2/i0/macro.mcfunction
+$return run clear @s minecraft:apple $(p0)
+
+data/batch/function/__oria/m114/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team add batch.red
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m115/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health base get 10
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m116/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m116/b2/i0/macro.mcfunction
+$return run enchant @s minecraft:sharpness $(p0)
+
+data/batch/function/__oria/m117/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points displayname {"text":"Control"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m118/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run gamerule random_tick_speed
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m119/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder damage buffer 7.5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m12/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run ride @e[tag=control.vehicle,limit=1] mount @e[tag=control.rider,limit=1]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m120/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier add batch:base 0.5 add_multiplied_base
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m121/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run gamemode creative @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m122/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace entity @e[tag=content.actor,limit=1] container.0 with minecraft:apple 1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m123/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run experience query @s levels
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m124/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld rate 1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m125/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m125/b2/i0/macro.mcfunction
+$return run time of minecraft:overworld set $(p0)t
+
+data/batch/function/__oria/m126/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @a minecraft:apple 1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m127/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m127/b2/i0/macro.mcfunction
+$return run weather rain $(p0)t
+
+data/batch/function/__oria/m128/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run experience add @s 2 points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m129/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run damage @e[tag=batch.victim,limit=1] 2 minecraft:generic
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m13/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~3 ~0 ~0 minecraft:oak_planks destroy
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m130/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @a minecraft:apple
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m131/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @s minecraft:apple[minecraft:custom_name="Prize"] 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m132/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement grant @a only batch:root a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m133/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spawnpoint @s ^0 ^0 ^1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m134/b0.mcfunction
+execute if loaded ~0 ~0 ~0 run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m136/b0.mcfunction
+execute if dimension minecraft:overworld run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m138/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace block ~0 ~0 ~0 container.* from entity @a weapon.*
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m139/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement revoke @a only batch:root
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m14/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~0 ~0 ~4 ~2 ~2 ~6 minecraft:stone
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m140/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard players display name @a batch.points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m141/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot give @s mine ~3 ~0 ~0 mainhand
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m142/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red friendlyFire false
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m143/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @s #minecraft:logs 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m144/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time query gametime
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m145/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run teleport @e[tag=batch.victim,limit=1] @e[tag=execution.destination,limit=1]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m146/b0.mcfunction
+execute unless score #nbt_ok batch.oria matches 1 run scoreboard players set #panic batch.oria 1
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+execute if score #s0 batch.oria matches 1.. run scoreboard players set #read_space batch.oria 1
+execute if score #read_space batch.oria matches 0 run scoreboard players operation #read_index batch.oria -= #s0 batch.oria
+execute if score #read_space batch.oria matches 1 run scoreboard players operation #read_index batch.oria += #s0 batch.oria
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m146/b0/i0/nbt.mcfunction
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+
+data/batch/function/__oria/m146/b0/i1/macro.mcfunction
+$return run setblock ~0 ~0 ~0 minecraft:chest[facing=north]$(p0) replace
+
+data/batch/function/__oria/m146/b0/i1/macro/arg0.mcfunction
+$execute if score #read_space batch.oria matches 0 run data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "arena"[$(p0)]."value"
+$execute if score #read_space batch.oria matches 1 run data modify storage batch:runtime "macro"."p0" set from storage batch:persistent "slots"[$(p0)]."value"
+
+data/batch/function/__oria/m147/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health get -10
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m148/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item modify block ~0 ~0 ~0 container.0 batch:add_count
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m149/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red color reset
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m15/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m15/b2/i0/macro.mcfunction
+$return run give @s minecraft:apple $(p0)
+
+data/batch/function/__oria/m150/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @s *[minecraft:custom_data~{"round":2}] 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m151/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~0 ~0 ~0 minecraft:chest[facing=north]{} replace
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m152/b0.mcfunction
+execute if slots block ~0 ~0 ~0 container.53 run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m154/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time query time
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m155/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run rotate @e[tag=control.rider,limit=1] ~15 ~-5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m156/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setworldspawn ~0 ~0 ~0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m157/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot give @s fish batch:fixed ~3 ~0 ~0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m158/b0.mcfunction
+execute if predicate batch:always run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m16/b0.mcfunction
+execute as @e[tag=execution.actor,dx=2,dy=2,dz=2] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m160/b0.mcfunction
+execute unless score #nbt_ok batch.oria matches 1 run scoreboard players set #panic batch.oria 1
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+execute if score #s0 batch.oria matches 1.. run scoreboard players set #read_space batch.oria 1
+execute if score #read_space batch.oria matches 0 run scoreboard players operation #read_index batch.oria -= #s0 batch.oria
+execute if score #read_space batch.oria matches 1 run scoreboard players operation #read_index batch.oria += #s0 batch.oria
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m160/b0/i0/nbt.mcfunction
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+
+data/batch/function/__oria/m160/b0/i1/macro.mcfunction
+$return run particle minecraft:dust$(p0) ~0 ~0 ~0 0 0 0 0 1 normal @a
+
+data/batch/function/__oria/m161/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives setdisplay sidebar batch.points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m162/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run weather rain 5s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m163/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace block ~0 ~0 ~0 container.* from entity @s batch:hands
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m164/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload add 0 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m165/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run tellraw @a[team=] {"text":"Unassigned"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m166/b0.mcfunction
+execute on attacker run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m168/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run tellraw @a[team=!] {"text":"Assigned"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m169/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team join batch.red #bot
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m170/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~3 ~0 ~0 ~5 ~0 ~0 minecraft:stone replace #minecraft:planks
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m171/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar get batch:bar visible
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m172/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run gamerule keep_inventory false
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m173/b0.mcfunction
+execute store result entity @s "Air" short 1 as @e[tag=execution.child] store success entity @s "Air" short 1 run function batch:__oria/m173/b0/i0/body
+
+data/batch/function/__oria/m173/b0/i0/body.mcfunction
+execute unless score #s2 batch.oria matches 1 run return fail
+
+data/batch/function/__oria/m174/b0.mcfunction
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m174/b1
+
+data/batch/function/__oria/m175/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @a minecraft:apple 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m176/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team join batch.red *
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m177/b0.mcfunction
+execute store result storage batch:execute "b" byte 0.5 store result storage batch:execute "s" short 0.5 store result storage batch:execute "i" int 0.5 store result storage batch:execute "l" long 0.5 store result storage batch:execute "f" float 0.5 store result storage batch:execute "d" double 0.5 run function batch:__oria/m177/b0/i0/body
+
+data/batch/function/__oria/m179/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard players display numberformat @a batch.points styled {"italic":1b}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m18/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~0 ~0 ~4 ~2 ~2 ~6 minecraft:oak_planks outline
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m180/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-2]."locals"[0]
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+
+data/batch/function/__oria/m182/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement revoke @a until batch:child
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m183/b0.mcfunction
+execute unless dimension minecraft:overworld run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m185/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m185/b2/i0/macro.mcfunction
+$return run particle minecraft:flame{} ~0 ~0 ~0 0 0 0 0 $(p0) normal @a
+
+data/batch/function/__oria/m186/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m186/b2/i0/macro.mcfunction
+$return run setblock ~3 ~0 ~0 minecraft:light[level=$(p0)] replace
+
+data/batch/function/__oria/m187/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~3 ~0 ~0 ~5 ~0 ~0 minecraft:oak_planks destroy
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m188/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red deathMessageVisibility never
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m189/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health base reset
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m19/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives setdisplay sidebar.team.red batch.points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m190/b0.mcfunction
+execute unless loaded 1000000 64 1000000 run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m192/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld set 6000t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m193/b0.mcfunction
+execute on vehicle run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m195/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team remove batch.blue
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m196/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red suffix {"text":" !"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m197/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run damage @e[tag=batch.victim,limit=1] 4 minecraft:generic by @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m198/b0.mcfunction
+execute as @s[nbt={"Tags":["execution.actor"]}] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m2/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run give @s minecraft:apple[!minecraft:food] 1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m20/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar get batch:bar value
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m200/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item override block ~0 ~0 ~0 container.* from entity @s weapon.*
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m201/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run tellraw @a[team=batch.control] {"text":"Team"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m202/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:block_interaction_range get 1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m203/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red displayName {"text":"Red team"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m204/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 ~8 ~0 ~0 replace normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m205/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace block ~0 ~0 ~0 container.* from entity @s weapon.*
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m206/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard players display numberformat @a batch.points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m207/b0.mcfunction
+execute as @s[name="A \"quoted\" \\ name$"] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m209/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard players display numberformat @a batch.points blank
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m21/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld resume
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m210/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard players display numberformat #bot batch.points fixed {"text":"Bot"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m211/b0.mcfunction
+execute as @s[name=!"A \"quoted\" \\ name$"] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m213/b0.mcfunction
+execute if blocks ~1 ~0 ~0 ~2 ~0 ~0 ~4 ~0 ~0 all run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m215/b0.mcfunction
+execute if biome ~0 ~0 ~0 #minecraft:is_overworld run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m217/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload remove 0 0 31 15
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m218/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 ~8 ~0 ~0 replace move
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m219/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier remove batch:total
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m22/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 to minecraft:the_nether 0 64 0 strict replace normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m220/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team leave @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m221/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~0 ~0 ~4 ~2 ~2 ~6 minecraft:stone hollow
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m222/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setworldspawn ~0 ~0 ~0 30 15
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m223/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spreadplayers ~0 ~0 1 3 under 100 true @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m224/b0.mcfunction
+execute as @a[advancements={batch:root=true}] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m226/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar style notched_10
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m227/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m227/b2/i0/macro.mcfunction
+$return run item replace block ~0 ~0 ~0 container.0 with minecraft:apple $(p0)
+
+data/batch/function/__oria/m228/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~0 ~0 ~0 minecraft:chest[facing=north] replace
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m229/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar players @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m23/b0.mcfunction
+execute positioned over motion_blocking positioned over motion_blocking_no_leaves positioned over ocean_floor run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m230/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m230/b2/i0/macro.mcfunction
+$return run experience add @s $(p0) levels
+
+data/batch/function/__oria/m231/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points numberformat blank
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m232/b0.mcfunction
+execute as @p[x=20,y=70,z=20,distance=..1] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m234/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points numberformat styled {"color":"gold","bold":1b}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m235/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload query
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m236/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement revoke @a from batch:root
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m237/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run difficulty hard
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m238/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace block ~0 ~0 ~0 container.0 with minecraft:apple 4
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m239/b0.mcfunction
+execute as @a[gamemode=adventure,level=3..5] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m241/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run weather clear
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m242/b0.mcfunction
+execute if slots block ~0 ~0 ~0 container.1 run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m244/b0.mcfunction
+execute unless score #nbt_ok batch.oria matches 1 run scoreboard players set #panic batch.oria 1
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+execute if score #s0 batch.oria matches 1.. run scoreboard players set #read_space batch.oria 1
+execute if score #read_space batch.oria matches 0 run scoreboard players operation #read_index batch.oria -= #s0 batch.oria
+execute if score #read_space batch.oria matches 1 run scoreboard players operation #read_index batch.oria += #s0 batch.oria
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m244/b0/i0/nbt.mcfunction
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+execute unless score #nbt_ok batch.oria matches 1 run return fail
+
+data/batch/function/__oria/m244/b0/i1/macro.mcfunction
+$return run give @s minecraft:apple[minecraft:custom_data=$(p0)] 1
+
+data/batch/function/__oria/m245/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m245/b2/i0/macro.mcfunction
+$return run give @s minecraft:apple[minecraft:custom_data={"round":$(p0)}] 1
+
+data/batch/function/__oria/m246/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team remove batch.red
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m247/b0.mcfunction
+execute on owner run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m249/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run rotate @e[tag=control.rider,limit=1] 90 10
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m25/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run posteffect clear @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m250/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run posteffect remove @a batch:gray
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m251/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier add batch:total 1 add_multiplied_total
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m252/b0.mcfunction
+execute summon minecraft:marker run function batch:__oria/m253/b0
+
+data/batch/function/__oria/m254/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points rendertype hearts
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m255/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~3 ~0 ~0 ~5 ~0 ~0 minecraft:stone replace minecraft:oak_log[axis=x]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m256/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team list
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m257/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run damage @e[tag=batch.victim,limit=1] 2.5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m258/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar value 5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m259/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points numberformat fixed {"text":"Round"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m26/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m26/b2/i0/macro.mcfunction
+$return run attribute @e[tag=control.rider,limit=1] minecraft:max_health base set $(p0)
+
+data/batch/function/__oria/m260/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run tellraw @a[team=!batch.control] {"text":"Other"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m261/b0.mcfunction
+execute as @a[gamemode=!adventure] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m263/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar visible true
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m264/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m264/b2/i0/macro.mcfunction
+$return run bossbar set batch:bar value $(p0)
+
+data/batch/function/__oria/m265/b0.mcfunction
+execute as @a[advancements={batch:root={a=true,b=false}}] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m267/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m267/b2/i0/macro.mcfunction
+$return run rotate @e[tag=control.rider,limit=1] $(p0) 0
+
+data/batch/function/__oria/m268/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m268/b2/i0/macro.mcfunction
+$return run scoreboard players display numberformat #bot batch.points fixed {"translate":"%s","with":[$(p0)]}
+
+data/batch/function/__oria/m269/b0.mcfunction
+execute as @s[predicate=batch:always] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m27/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run particle minecraft:dust{"color":[1d,0d,0d],"scale":1d} ~0 ~0 ~0 0 0 0 0 1 normal @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m271/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health base set 16.5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m272/b0.mcfunction
+execute positioned over world_surface run function batch:__oria/m273/b0
+
+data/batch/function/__oria/m273/b0.mcfunction
+teleport @e[tag=batch.victim,limit=1] ~0 ~0 ~0
+
+data/batch/function/__oria/m274/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run enchant @s minecraft:sharpness 1
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m275/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder warning time 2s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m276/b0.mcfunction
+execute as @s[x_rotation=-10..10,y_rotation=170..-170] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m278/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot spawn ~0 ~1 ~0 loot batch:fixed
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m279/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m279/b2/i0/macro.mcfunction
+$return run fill ~3 ~0 ~0 ~$(p0) ~0 ~0 minecraft:stone
+
+data/batch/function/__oria/m28/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar list
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m280/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run damage @e[tag=batch.victim,limit=1] 3 minecraft:generic at ~0 ~0 ~0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m281/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier remove batch:add
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m282/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @s minecraft:apple[!minecraft:food] 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m283/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run ride @e[tag=control.rider,limit=1] mount @e[tag=control.vehicle,limit=1]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m284/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run weather clear 200t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m285/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team empty batch.red
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m286/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload query 0 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m287/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~3 ~0 ~0 minecraft:oak_planks keep
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m288/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~3 ~0 ~0 minecraft:stone strict
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m289/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team list batch.red
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m29/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run recipe take @a batch:test
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m290/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @s *[minecraft:count~{"min":2,"max":2},minecraft:custom_name] 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m291/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spawnpoint @a ~0 ~0 ~0 450.0 120.0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m292/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item fill block ~0 ~0 ~0 container.* from entity @s weapon.*
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m293/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~3 ~0 ~0 minecraft:stone replace
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m294/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 ~4 ~0 ~0 replace force
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m295/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team add batch.blue {"text":"Blue team"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m296/b0.mcfunction
+execute if biome ~0 ~0 ~0 minecraft:plains run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m298/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run posteffect add @a batch:gray
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m299/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar max 25
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m3/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld rate 0.5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m30/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld query minecraft:day repetition
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m300/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run recipe give @a *
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m301/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload remove 0 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m302/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement revoke @a everything
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m303/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot give @s kill @e[tag=content.actor,limit=1]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m304/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run recipe give @a batch:test
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m305/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot insert ~0 ~0 ~0 loot batch:fixed
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m306/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run recipe take @a *
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m307/b0.mcfunction
+execute store success storage batch:execute "ok" byte 1 store result storage batch:execute "result" int 1 store success bossbar batch:execute value run function batch:__oria/m307/b0/i0/body
+
+data/batch/function/__oria/m307/b0/i0/body.mcfunction
+execute unless score #s2 batch.oria matches 1 run return fail
+
+data/batch/function/__oria/m308/b0.mcfunction
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m174/b1
+
+data/batch/function/__oria/m309/b0.mcfunction
+execute store result entity @e[tag=batch.victim,limit=1] "Air" short 1 run function batch:__oria/m309/b0/i0/body
+
+data/batch/function/__oria/m31/b0.mcfunction
+execute store success storage batch:execute "ok" byte 1 store result storage batch:execute "result" int 1 store result bossbar batch:execute value store success bossbar batch:execute max run function batch:__oria/m31/b0/i0/body
+
+data/batch/function/__oria/m311/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement grant @a everything
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m312/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld add -100t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m313/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team leave #bot
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m314/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run defaultgamemode adventure
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m315/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier value get batch:base 100
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m316/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team join batch.red @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m317/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload remove all
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m318/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run damage @e[tag=batch.victim,limit=1] 5 minecraft:generic by @s from @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m319/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red nametagVisibility hideForOtherTeams
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m320/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run teleport @e[tag=batch.victim,limit=1] ~0 ~0 ~0 facing entity @e[tag=execution.destination,limit=1] eyes
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m321/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives setdisplay sidebar
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m322/b0.mcfunction
+execute on leasher run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m324/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run give @a minecraft:apple 3
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m325/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setblock ~0 ~0 ~0 minecraft:chest[facing=east] replace
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m326/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run gamemode survival @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m327/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement grant @a through batch:child
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m328/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run swing @s mainhand none 6t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m329/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar get batch:bar players
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m33/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar add batch:bar {"text":"Round"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m330/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m330/b2/i0/macro.mcfunction
+$return run item replace block ~0 ~0 ~0 container.$(p0) with minecraft:apple 1
+
+data/batch/function/__oria/m331/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar color red
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m332/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spawnpoint @a ~0 ~0 ~0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m333/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~3 ~0 ~0 ~5 ~0 ~0 minecraft:stone
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m334/b0.mcfunction
+execute if block ~0 ~0 ~0 minecraft:chest{"Items":[]} run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m336/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run weather thunder 300t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m337/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld set minecraft:day
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m338/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run swing @s offhand stab 0.5s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m339/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 ~4 ~0 ~0 replace normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m34/b0.mcfunction
+execute if items block ~0 ~0 ~0 container.* minecraft:apple run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m340/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement grant @a from batch:root
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m341/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run fill ~3 ~0 ~0 ~5 ~0 ~0 minecraft:oak_planks replace minecraft:stone strict
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m342/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red collisionRule pushOwnTeam
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m343/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot give @s mine ~3 ~0 ~0 minecraft:diamond_pickaxe
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m344/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar remove batch:bar
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m345/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run setworldspawn
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m346/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spectate @e[tag=control.rider,limit=1] @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m347/b0.mcfunction
+execute if blocks ~1 ~0 ~0 ~2 ~0 ~0 ~4 ~0 ~0 masked run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m349/b0.mcfunction
+execute on passengers run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m351/b0.mcfunction
+execute if block ~0 ~0 ~0 minecraft:chest[facing=north] run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m353/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar get batch:bar max
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m354/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot replace block ~0 ~0 ~0 container.0 3 loot batch:fixed
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m355/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot replace entity @a weapon.mainhand loot batch:fixed
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m356/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m356/b2/i0/macro.mcfunction
+$return run gamerule random_tick_speed $(p0)
+
+data/batch/function/__oria/m357/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder damage amount 0.25
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m36/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m36/b2/i0/macro.mcfunction
+$return run spawnpoint @a ~$(p0) ~0 ~0
+
+data/batch/function/__oria/m37/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot give @s loot {"type":"minecraft:chest","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"minecraft:apple"}]}]}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m38/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder set 1000
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m39/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points displayautoupdate false
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m4/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder set 1200 10s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m40/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld query minecraft:day
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m41/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spectate
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m42/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run experience query @s points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m43/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~0 ~0 ~0 ~0 ~0 ~0 ~1 ~0 ~0 replace normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m44/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run forceload add 0 0 31 15
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m45/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run teleport @e[tag=execution.child] ~0 ~0 ~0 90.5 0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m46/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points rendertype integer
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m47/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m47/b2/i0/macro.mcfunction
+$return run forceload add 0 0 $(p0) 0
+
+data/batch/function/__oria/m48/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run gamerule keep_inventory
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m49/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder get
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m5/b0.mcfunction
+execute if predicate {"type":"minecraft:all_of","terms":[]} run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m50/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run swing @e[tag=control.marker,limit=1] mainhand whack 6t
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m51/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run experience set @s 3 levels
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m52/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health get 10
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m53/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m53/b2/i0/macro.mcfunction
+$return run teleport @e[tag=batch.victim,limit=1] ~0 ~0 ~0 ~$(p0) 0
+
+data/batch/function/__oria/m54/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m54/b2/i0/macro.mcfunction
+$return run damage @e[tag=batch.victim,limit=1] $(p0)
+
+data/batch/function/__oria/m55/b0.mcfunction
+execute on target run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m57/b0.mcfunction
+execute on origin run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m59/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run time of minecraft:overworld query time
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m60/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run particle minecraft:flame{} ~0 ~0 ~0 0 0 0 0 0 force @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m61/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run rotate @e[tag=control.rider,limit=1] facing entity @e[tag=control.vehicle,limit=1] eyes
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m62/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clear @a *
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m64/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement revoke @a through batch:child
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m65/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement revoke @a only batch:root a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m66/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m66/b2/i0/macro.mcfunction
+$return run worldborder set $(p0)
+
+data/batch/function/__oria/m67/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run ride @e[tag=control.rider,limit=1] dismount
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m68/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier remove batch:base
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m69/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives setdisplay list batch.points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m7/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run difficulty
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m70/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 ~8 ~0 ~0 strict filtered #minecraft:planks normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m71/b0.mcfunction
+execute on controller run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m73/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spawnpoint @s
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m74/b0.mcfunction
+execute unless score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b1
+data modify storage batch:runtime "macro"."p0" set from storage batch:runtime "stack"[-1]."locals"[0]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m74/b2/i0/macro.mcfunction
+$return run swing @s mainhand whack $(p0)t
+
+data/batch/function/__oria/m75/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run teleport @e[tag=batch.victim,limit=1] ~0 ~0 ~0 facing ~2 ~0 ~0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m76/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run experience set @s 100000 points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m77/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone ~3 ~0 ~0 ~5 ~0 ~0 ~8 ~0 ~0 masked normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m78/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run give @s minecraft:apple[minecraft:custom_name="Prize",minecraft:custom_data={"round":2}] 2
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m79/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run particle minecraft:flame{} ~0 ~0 ~0 0 0 0 0 1 normal @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m8/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run attribute @e[tag=control.rider,limit=1] minecraft:max_health modifier add batch:add 2 add_value
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m80/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run rotate @e[tag=control.rider,limit=1] facing ~0 ~0 ~0
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m81/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder center 10.5 20.5
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m82/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run advancement grant @a until batch:child
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m83/b0.mcfunction
+execute if items entity @s weapon.* minecraft:apple run function batch:__oria/m6/b0
+
+data/batch/function/__oria/m85/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run spreadplayers ~0 ~0 0 2 false @e[tag=control.rider,limit=1]
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m86/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team join batch.red @a
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m87/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run experience set @s 5 points
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m88/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run scoreboard objectives modify batch.points numberformat
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m89/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item replace block ~0 ~0 ~0 container.* from entity @s {"type":"minecraft:slot_range","slots":"weapon.*"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m9/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run item modify block ~0 ~0 ~0 container.0 {"type":"minecraft:set_count","count":6}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m90/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red prefix {"text":"[R] "}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m91/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder add 100
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m92/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run worldborder warning distance 9
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m93/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run loot give @a loot batch:fixed
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m94/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run bossbar set batch:bar name {"text":"Changed"}
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m95/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run team modify batch.red color red
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m96/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run clone from minecraft:overworld ~3 ~0 ~0 ~5 ~0 ~0 to minecraft:overworld ~8 ~0 ~0 strict replace normal
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m97/b0.mcfunction
+execute store success score #s2 batch.oria run execute store result score #s3 batch.oria run gamerule keep_inventory true
+execute if score #s0 batch.oria matches 1 run return run function batch:__oria/m0/b2
+
+data/batch/function/__oria/m98/b0.mcfunction
+execute if block ~1 ~0 ~0 #minecraft:logs run function batch:__oria/m6/b0

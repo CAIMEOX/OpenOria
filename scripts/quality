@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+# Trusted module access and proof escapes are reviewed as exact file/declaration pairs.
+audit_status=0
+while IFS= read -r entry; do
+  [[ -z "$entry" ]] && continue
+  if ! rg -F -x -q -- "$entry" scripts/trusted-code.txt; then
+    printf '%s\n' "$entry" >&2
+    audit_status=1
+  fi
+done < <(rg --with-filename --no-line-number --no-heading \
+  '\b(sorry|admit|unsafeCast|axiom|unsafe|partial|noncomputable)\b|^[[:space:]]*(public[[:space:]]+)?(meta[[:space:]]+)?import all ' \
+  --glob '*.lean' Oria.lean Oria || true)
+if [[ "$audit_status" != "0" ]]; then
+  echo "Oria contains an unreviewed trusted declaration or internal import" >&2
+  exit 1
+fi
+
+lake build Oria Oria.Compiler Oria.IR
+lake build OriaTests
+./scripts/check-docs
+lake build nbt-artifact-test typed-nbt-artifact-test oria-dice oria-trigger oria-rps oria-ledger oria-merge-sort \
+  rps-artifact-test command-arguments-artifact-test
+lake exe datapack-artifact-test
+lake exe persistent-artifact-test
+lake exe value-types-artifact-test
+lake exe failure-artifact-test
+lake exe optimization-artifact-test
+lake exe task-artifact-test
+lake exe register-artifact-test
+lake exe calls-artifact-test
+lake exe standard-command-artifact-test
+lake exe data-compute-artifact-test
+lake exe execute-artifact-test
+lake exe flow-artifact-test
+lake exe runtime-nbt-artifact-test
+lake exe typed-nbt-artifact-test
+lake exe global-nbt-artifact-test
+lake exe scoreboard-artifact-test
+lake exe entity-command-artifact-test
+lake exe presentation-artifact-test
+lake exe batch-artifact-test
+lake exe generation-artifact-test
+lake exe utility-artifact-test
+lake exe server-artifact-test
+
+# Command-output golden files are checked even when Lake reuses an olean.
+lake env lean Oria/Proofs/WordLower.lean
+
+./scripts/lake-test
+
+for check in McFunctionAtomicity TreeVisibility ContVisibility \
+  StdVisibility ExecuteImports IRImports NumberProviderImports \
+  LanguageImports LanguageAbstraction RepresentationLayerVisibility NbtImports NbtIntegration; do
+  lake env lean "tests/${check}.lean"
+done

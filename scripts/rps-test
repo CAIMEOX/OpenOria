@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+root="$PWD"
+mode="${1:-game}"
+case "$mode" in
+  game) main_class=oria.integration.PlayerAcceptance ;;
+  --admin) main_class=oria.integration.AdminAcceptance ;;
+  --language) main_class=oria.integration.LanguageAcceptance ;;
+  --tasks) main_class=oria.integration.TaskAcceptance ;;
+  --merge-sort) main_class=oria.integration.MergeSortAcceptance ;;
+  --globals) main_class=oria.integration.GlobalNbtAcceptance ;;
+  *) echo "usage: scripts/rps-test [--admin|--language|--tasks|--merge-sort|--globals]" >&2; exit 2 ;;
+esac
+java_bin="${ORIA_JAVA:-/opt/homebrew/opt/openjdk@25/bin/java}"
+javac_bin="${java_bin%/java}/javac"
+server="${ORIA_SERVER_JAR:-$root/.lake/minecraft/server-26.3.jar}"
+bundle="$root/.lake/minecraft/bundler-26.3"
+expected="$(jq -r .server.sha1 minecraft-26.3.lock.json)"
+[[ "$(shasum -a 1 "$server" | awk '{print $1}')" == "$expected" ]]
+# The bundled launcher extracts its pinned server and library jars without starting a world.
+"$java_bin" -DbundlerMainClass= -DbundlerRepoDir="$bundle" -jar "$server"
+classpath="$bundle/versions/26.3/server-26.3.jar"
+while IFS= read -r jar; do
+  classpath="$classpath:$jar"
+done < <(rg --files --hidden --no-ignore "$bundle/libraries" -g '*.jar')
+
+if [[ "$mode" == --admin ]]; then
+  lake build server-artifact-test
+elif [[ "$mode" == --language ]]; then
+  lake build oria-ledger
+elif [[ "$mode" == --tasks ]]; then
+  lake build task-artifact-test
+elif [[ "$mode" == --merge-sort ]]; then
+  lake build oria-merge-sort typed-nbt-artifact-test
+elif [[ "$mode" == --globals ]]; then
+  lake build global-nbt-artifact-test
+else
+  lake build oria-rps rps-artifact-test scoreboard-artifact-test command-arguments-artifact-test entity-command-artifact-test presentation-artifact-test batch-artifact-test generation-artifact-test utility-artifact-test
+fi
+run="$(mktemp -d "$root/.lake/rps-test.XXXXXX")"
+mkdir -p "$run/packs" "$run/classes"
+cp -R integration/rps/driver "$run/packs/driver"
+if [[ "$mode" == --merge-sort ]]; then
+  cp integration/rps/merge-sort.json "$run/packs/driver/data/rps_test/test_instance/game.json"
+fi
+mkdir -p "$run/packs/driver/data/mucmd_test/structure"
+cp integration/datapack/driver/data/mucmd_test/structure/fib_5.nbt \
+  "$run/packs/driver/data/mucmd_test/structure/"
+if [[ "$mode" == --admin ]]; then
+  .lake/build/bin/server-artifact-test "$run/packs/server"
+elif [[ "$mode" == --language ]]; then
+  .lake/build/bin/oria-ledger "$run/packs/ledger"
+  .lake/build/bin/oria-ledger "$run/packs/ledgerstack" --stack
+elif [[ "$mode" == --tasks ]]; then
+  .lake/build/bin/task-artifact-test "$run/packs/task"
+  .lake/build/bin/task-artifact-test "$run/packs/task-stack" stack
+elif [[ "$mode" == --merge-sort ]]; then
+  .lake/build/bin/oria-merge-sort "$run/packs/merge-sort"
+  .lake/build/bin/oria-merge-sort "$run/packs/merge-sort-stack" --stack
+  .lake/build/bin/typed-nbt-artifact-test "$run/packs/typed-nbt"
+  .lake/build/bin/typed-nbt-artifact-test "$run/packs/typed-nbt-stack" stack
+elif [[ "$mode" == --globals ]]; then
+  .lake/build/bin/global-nbt-artifact-test "$run/packs/globals"
+  .lake/build/bin/global-nbt-artifact-test "$run/packs/globals-stack" stack
+  .lake/build/bin/global-nbt-artifact-test "$run/packs/globals-managed" managed
+  .lake/build/bin/global-nbt-artifact-test "$run/packs/globals-relocated" relocated
+else
+  .lake/build/bin/rps-artifact-test "$run/packs/acceptance"
+  .lake/build/bin/oria-rps "$run/packs/game"
+  .lake/build/bin/scoreboard-artifact-test "$run/packs/scoreboard"
+  .lake/build/bin/command-arguments-artifact-test "$run/packs/arguments"
+  .lake/build/bin/entity-command-artifact-test "$run/packs/entities"
+  .lake/build/bin/presentation-artifact-test "$run/packs/presentation"
+  .lake/build/bin/batch-artifact-test "$run/packs/batch"
+  .lake/build/bin/generation-artifact-test "$run/packs/generation"
+  .lake/build/bin/utility-artifact-test "$run/packs/utility"
+fi
+"$javac_bin" -cp "$classpath" -d "$run/classes" \
+  integration/rps/PlayerAcceptance.java integration/rps/EntityAcceptance.java integration/rps/PresentationAcceptance.java \
+  integration/rps/BatchAcceptance.java integration/rps/WorldBatchAcceptance.java \
+  integration/rps/PlayerBatchAcceptance.java integration/rps/ManagementBatchAcceptance.java \
+  integration/rps/ControlAcceptance.java integration/rps/DisplayControlAcceptance.java \
+  integration/rps/ItemContentAcceptance.java integration/rps/BlockContentAcceptance.java \
+  integration/rps/ExecutionAcceptance.java integration/rps/GenerationAcceptance.java \
+  integration/rps/UtilityAcceptance.java integration/rps/AdminAcceptance.java \
+  integration/rps/LanguageAcceptance.java integration/rps/TaskAcceptance.java \
+  integration/rps/MergeSortAcceptance.java integration/rps/GlobalNbtAcceptance.java
+echo "Command GameTest artifacts ($mode): $run"
+cd "$run"
+if ! "$java_bin" -cp "$run/classes:$classpath" "$main_class" \
+    --packs "$run/packs" --tests 'rps_test:game' --report "$run/report.xml" \
+    --universe "$run/universe" --verify false --repeatCount 1 >"$run/server.log" 2>&1; then
+  tail -n 45 "$run/server.log"
+  exit 1
+fi
+if rg -q 'Failed to load function' "$run/server.log"; then
+  rg 'Failed to load function' "$run/server.log"
+  exit 1
+fi
+if [[ "$mode" == --tasks || "$mode" == --merge-sort || "$mode" == --globals ]] && rg -q 'Command execution stopped due to limit' "$run/server.log"; then
+  rg 'Command execution stopped due to limit' "$run/server.log"
+  exit 1
+fi
+tail -n 12 "$run/server.log"

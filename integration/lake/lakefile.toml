@@ -1,0 +1,12 @@
+name = "oria-consumer"
+version = "0.1.0"
+defaultTargets = ["Game"]
+packagesDir = "../../.lake/packages"
+
+[[require]]
+name = "oria"
+path = "../.."
+
+[[lean_lib]]
+name = "Game"
+defaultFacets = ["datapack"]

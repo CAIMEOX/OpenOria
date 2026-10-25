@@ -1,0 +1,178 @@
+data/execute/function/__oria/hook/4.mcfunction
+execute if score #phase execute.oria matches 1.. run return fail
+scoreboard players set #phase execute.oria 1
+function execute:__oria/m11/b0
+scoreboard players set #phase execute.oria 0
+
+data/execute/function/__oria/load.mcfunction
+execute if score #phase execute.oria matches 1.. run return fail
+scoreboard objectives add execute.oria dummy
+scoreboard players set #phase execute.oria 4
+data modify storage execute:runtime "macro" set value {}
+scoreboard players set #phase execute.oria 0
+
+data/execute/function/__oria/m0/b0.mcfunction
+execute as @e[type=minecraft:marker,tag=oria_execute] run function execute:__oria/m1/b0
+scoreboard players set #continued execute.oria 1
+return 0
+
+data/execute/function/__oria/m1/b0.mcfunction
+scoreboard players set #r0 execute.oria 0
+execute store success score #r0 execute.oria run scoreboard players operation #before execute.oria += #one execute.oria
+execute unless score #r0 execute.oria matches 1 run return run function execute:__oria/m1/b2
+execute as @e[type=minecraft:marker,tag=oria_execute] run function execute:__oria/m2/b0
+scoreboard players operation #outer execute.oria += #one execute.oria
+return 0
+
+data/execute/function/__oria/m1/b2.mcfunction
+return 0
+
+data/execute/function/__oria/m10/b0.mcfunction
+scoreboard players set #s2 execute.oria 0
+scoreboard players set #r1 execute.oria 0
+execute store success score #s2 execute.oria run execute store result score #r1 execute.oria run scoreboard players get @s execute.oria
+execute store result storage execute:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #s2 execute.oria
+scoreboard players operation #s0 execute.oria = #s2 execute.oria
+execute unless score #s0 execute.oria matches 1 run return run function execute:__oria/m10/b5
+scoreboard players operation #r0 execute.oria += #r1 execute.oria
+execute store result storage execute:runtime "macro"."p0" int 1 run scoreboard players get #r0 execute.oria
+scoreboard players set #r1 execute.oria 0
+execute store success score #r1 execute.oria run function execute:__oria/m10/b1/i1/macro with storage execute:runtime "macro"
+execute unless score #r1 execute.oria matches 1 run return run function execute:__oria/m10/b5
+scoreboard players set #r1 execute.oria 0
+execute store success score #r1 execute.oria run scoreboard players operation #count execute.oria += #one execute.oria
+execute unless score #r1 execute.oria matches 1 run return run function execute:__oria/m10/b5
+scoreboard players set #r1 execute.oria 0
+execute store success score #r1 execute.oria run scoreboard players set #seed execute.oria 999
+execute unless score #r1 execute.oria matches 1 run return run function execute:__oria/m10/b5
+scoreboard players set #ret0 execute.oria 1
+scoreboard players operation #ret1 execute.oria = #r0 execute.oria
+return 0
+
+data/execute/function/__oria/m10/b1/i1/macro.mcfunction
+$return run scoreboard players set @s execute.oria $(p0)
+
+data/execute/function/__oria/m10/b5.mcfunction
+scoreboard players set #ret0 execute.oria 0
+scoreboard players set #ret1 execute.oria 0
+return 0
+
+data/execute/function/__oria/m11/b0.mcfunction
+execute as @a run function execute:__oria/m12/b0
+return 0
+
+data/execute/function/__oria/m12/b0.mcfunction
+scoreboard players set @s execute.oria 1
+return 0
+
+data/execute/function/__oria/m2/b0.mcfunction
+scoreboard players operation #cross execute.oria += #one execute.oria
+return 0
+
+data/execute/function/__oria/m3/b0.mcfunction
+scoreboard players set #r0 execute.oria 11
+function execute:__oria/m4/b0
+return 0
+
+data/execute/function/__oria/m4/b0.mcfunction
+execute store result storage execute:runtime "macro"."p0" int 1 run scoreboard players get #r0 execute.oria
+function execute:__oria/m4/b0/i0/macro with storage execute:runtime "macro"
+scoreboard players set @s execute.oria 77
+return 0
+
+data/execute/function/__oria/m4/b0/i0/macro.mcfunction
+$execute as @e[type=minecraft:marker,tag=oria_execute] if score @s execute.oria matches $(p0).. at @s positioned ~1 ~0 ~0 run function execute:__oria/m5/b0
+return 0
+
+data/execute/function/__oria/m5/b0.mcfunction
+teleport @s ~0 ~0 ~0
+return 0
+
+data/execute/function/__oria/m6/b0.mcfunction
+execute as @e[tag=oria_execute_absent] run function execute:__oria/m7/b0
+scoreboard players set #continued execute.oria 2
+return 0
+
+data/execute/function/__oria/m7/b0.mcfunction
+scoreboard players set #skipped execute.oria 1
+return 0
+
+data/execute/function/__oria/m8/b0.mcfunction
+function execute:__oria/m9/b0
+return 0
+
+data/execute/function/__oria/m9/b0.mcfunction
+scoreboard players set #r1 execute.oria 0
+scoreboard players set #r0 execute.oria 0
+execute store success score #r1 execute.oria run execute store result score #r0 execute.oria run scoreboard players get #seed execute.oria
+execute unless score #r1 execute.oria matches 1 run return run function execute:__oria/m1/b2
+data modify storage execute:runtime "stack_draft" set value {"locals":[0],"saved":[0],"result":[]}
+data modify storage execute:runtime "stack" append from storage execute:runtime "stack_draft"
+data remove storage execute:runtime "stack_draft"
+execute store result storage execute:runtime "stack"[-1]."locals"[0] int 1 run scoreboard players get #r0 execute.oria
+execute store result storage execute:runtime "stack"[-1]."saved"[0] int 1 run scoreboard players get #r0 execute.oria
+execute store result score @s execute.result as @e[type=minecraft:marker,tag=oria_execute] store success score @s execute.success store result score @s execute.result run function execute:__oria/m9/b1/i0/body
+execute store result score #r0 execute.oria run data get storage execute:runtime "stack"[-1]."saved"[0]
+data remove storage execute:runtime "stack"[-1]
+execute store result storage execute:runtime "macro"."p0" int 1 run scoreboard players get #r0 execute.oria
+function execute:__oria/m9/b1/i1/macro with storage execute:runtime "macro"
+return 0
+
+data/execute/function/__oria/m9/b1/i0/body.mcfunction
+data modify storage execute:runtime "stack_draft" set value {"locals":[0],"saved":[],"result":[]}
+data modify storage execute:runtime "stack" append from storage execute:runtime "stack_draft"
+data remove storage execute:runtime "stack_draft"
+execute store result score #r0 execute.oria run data get storage execute:runtime "stack"[-2]."locals"[0]
+function execute:__oria/m10/b0
+scoreboard players operation #s2 execute.oria = #ret0 execute.oria
+scoreboard players operation #s3 execute.oria = #ret1 execute.oria
+data remove storage execute:runtime "stack"[-1]
+execute unless score #s2 execute.oria matches 1 run return fail
+return run scoreboard players get #s3 execute.oria
+
+data/execute/function/__oria/m9/b1/i1/macro.mcfunction
+$return run scoreboard players set #after execute.oria $(p0)
+
+data/execute/function/__oria/tick.mcfunction
+function execute:__oria/hook/4
+
+data/execute/function/conditional.mcfunction
+execute if score #phase execute.oria matches 1.. run return fail
+scoreboard players set #phase execute.oria 1
+function execute:__oria/m3/b0
+data modify storage execute:runtime "macro" set value {}
+scoreboard players set #phase execute.oria 0
+return 0
+
+data/execute/function/empty.mcfunction
+execute if score #phase execute.oria matches 1.. run return fail
+scoreboard players set #phase execute.oria 1
+function execute:__oria/m6/b0
+scoreboard players set #phase execute.oria 0
+return 0
+
+data/execute/function/fork.mcfunction
+execute if score #phase execute.oria matches 1.. run return fail
+scoreboard players set #phase execute.oria 1
+data modify storage execute:runtime "stack" set value []
+function execute:__oria/m8/b0
+data remove storage execute:runtime "stack"
+data modify storage execute:runtime "macro" set value {}
+scoreboard players set #phase execute.oria 0
+return 0
+
+data/execute/function/nested.mcfunction
+execute if score #phase execute.oria matches 1.. run return fail
+scoreboard players set #phase execute.oria 1
+function execute:__oria/m0/b0
+scoreboard players set #phase execute.oria 0
+return 0
+
+data/minecraft/tags/function/load.json
+{"values": ["execute:__oria/load"], "replace": false}
+
+data/minecraft/tags/function/tick.json
+{"values": ["execute:__oria/tick"], "replace": false}
+
+pack.mcmeta
+{"pack": {"min_format": [121, 0], "max_format": [121, 0], "description": "Scoped execution acceptance"}}

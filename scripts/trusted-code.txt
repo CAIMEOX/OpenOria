@@ -1,0 +1,98 @@
+Oria/Command/Catalog.lean:import all Oria.IR.Tree.Definition
+Oria/Command/Catalog.lean:import all Oria.IR.Tree.Syntax
+Oria/Compiler/Lower/ANF.lean:import all Oria.IR.Tree.Definition
+Oria/Compiler/Lower/ANF.lean:import all Oria.IR.Tree.Syntax
+Oria/Compiler/Lower/Scope.lean:import all Oria.IR.Tree.Elaborated
+Oria/Compiler/Lower/Scope.lean:import all Oria.IR.Tree.Definition
+Oria/Compiler/Lower/Scope.lean:import all Oria.IR.Tree.Syntax
+Oria/Compiler/Lower/Pattern.lean:private partial def compile {Γ types : List ObjTy} {joins : List (List ObjTy)} {result : ObjTy}
+Oria/Compiler/Program.lean:import all Oria.IR.Program.Closed
+Oria/Datapack/Spec.lean:import all Oria.Language.Persistent
+Oria/IR/Catalog/Function.lean:import all Oria.IR.Tree.Definition
+Oria/IR/Catalog/Function.lean:import all Oria.IR.Tree.Syntax
+Oria/IR/Catalog/Object.lean:import all Oria.IR.Tree.Definition
+Oria/IR/Catalog/Object.lean:import all Oria.IR.Tree.Syntax
+Oria/IR/Tree/Build.lean:import all Oria.IR.Common.Local
+Oria/IR/Tree/Build.lean:import all Oria.IR.Tree.Syntax
+Oria/IR/Tree/Definition.lean:import all Oria.IR.Tree.Build
+Oria/IR/Tree/Dependencies.lean:import all Oria.IR.Tree.Definition
+Oria/IR/Tree/Dependencies.lean:import all Oria.IR.Tree.Syntax
+Oria/IR/Tree/Pretty.lean:import all Oria.IR.Common.Local
+Oria/IR/Tree/Pretty.lean:import all Oria.IR.Tree.Definition
+Oria/Language/Builder.lean:import all Oria.IR.Tree.Elaborated
+Oria/Language/Failure.lean:import all Oria.Language.Builder
+Oria/Language/Nbt.lean:import all Oria.Language.Builder
+Oria/Language/TypedNbt.lean:import all Oria.Language.Builder
+Oria/Language/TypedNbt.lean:import all Oria.Nbt.Description
+Oria/Nbt/Deriving.lean:meta import all Oria.Nbt.Description
+Oria/Std/Nbt.lean:import all Oria.Language.TypedNbt
+Oria/Meta/Quote.lean:private partial def quoteSchema : Nbt.Schema → Term
+Oria/Std/Data.lean:import all Oria.Language.Nbt
+Oria/Language/Persistent.lean:import all Oria.Language.Builder
+Oria/Runtime/GC.lean:import all Oria.Language.Builder
+Oria/Meta/Collect.lean:import all Oria.IR.Program.Collected
+Oria/Meta/Collect.lean:import all Oria.IR.Tree.Dependencies
+Oria/Meta/Collect.lean:import all Oria.IR.Tree.Elaborated
+Oria/Meta/Datapack.lean:meta import all Oria.Meta.Datapack.Eval
+Oria/Meta/Datapack/Eval.lean:private unsafe def specImpl (value : Lean.Expr) : Lean.MetaM Spec :=
+Oria/Meta/Datapack/Eval.lean:private unsafe def artifactImpl (value : Lean.Expr) : Lean.MetaM Artifact :=
+Oria/Datapack/Export.lean:import all Oria.Meta.Datapack
+Oria/Datapack/Export.lean:import all Oria.Meta.Datapack.Eval
+Oria/Datapack/Export.lean:  unsafe Lean.enableInitializersExecution
+Oria/Meta/Elab/ProgDo.lean:meta import all Oria.Meta.Elab.Program.Internal
+Oria/Meta/Elab/ProgDo.lean:  let (program, binder) ← Term.withSynthesize (postpone := .partial) do
+Oria/Meta/Elab/ProgDo.lean:  let value ← try Term.withoutErrToSorry <| Term.withSynthesize (postpone := .partial) do
+Oria/Meta/Elab/ProgDo.lean:      | none => Term.withSynthesize (postpone := .partial) (Term.elabTerm action none)
+Oria/Meta/Elab/ProgDo.lean:  let program ← Term.withSynthesize (postpone := .partial) build
+Oria/Meta/Elab/NbtAccess.lean:meta import all Oria.Meta.Elab.Program.Internal
+Oria/Meta/Elab/NbtAccess.lean:private partial def selection? (stx : Syntax) : TermElabM (Option Selection) := do
+Oria/Meta/Elab/Constructor.lean:meta import all Oria.Meta.Elab.Program.Internal
+Oria/Meta/Elab/Operators.lean:meta import all Oria.Meta.Elab.Program.Internal
+Oria/Meta/Elab/ProgMatch.lean:meta import all Oria.Meta.Elab.Program.Internal
+Oria/Meta/Elab/ProgMatch.lean:meta import all Oria.Language.Builder
+Oria/Meta/Elab/ProgMatch.lean:private meta partial def sourceOfTemplate
+Oria/Meta/McFunction.lean:meta import all Oria.Language.Builder
+Oria/Meta/McFunction.lean:meta import all Oria.Meta.McFunction.Eval
+Oria/Meta/McFunction/Eval.lean:meta import all Oria.Language.Builder
+Oria/Meta/McFunction/Eval.lean:private unsafe def recipeImpl
+Oria/Meta/ObjectDerive.lean:meta import all Oria.Language.Object.Type
+Oria/Meta/ObjectDerive.lean:meta import all Oria.Language.Builder
+Oria/Meta/ObjectDerive.lean:private partial def templateOf
+Oria/Meta/ObjectDerive.lean:private partial def templateCodeTerm
+Oria/Meta/ObjectDerive.lean:private partial def sourceTemplateExpr
+Oria/Meta/ObjectDerive.lean:private partial def withObjectParams
+Oria/Meta/Persistent.lean:meta import all Oria.Language.Persistent
+Oria/Meta/Persistent.lean:meta import all Oria.Language.Builder
+Oria/Meta/Persistent.lean:meta import all Oria.Meta.McFunction
+Oria/Meta/Persistent.lean:meta import all Oria.Meta.McFunction.Eval
+Oria/NumberProvider/Encode/DP121.lean:import all Oria.NumberProvider.Core
+Oria/Std/Compute/Number.lean:import all Oria.Std.Command.Arg.Data
+Oria/Std/Compute/Number.lean:import all Oria.NumberProvider.Core
+Oria/Std/Compute/Number.lean:import all Oria.NumberProvider.Encode.DP121
+Oria/Proofs/ANFScoped.lean:import all Oria.IR.Common.Local
+Oria/Proofs/ANFScoped.lean:import all Oria.IR.Tree.Definition
+Oria/Proofs/ANFScoped.lean:import all Oria.IR.Tree.Syntax
+Oria/Proofs/ANFScoped.lean:meta import all Oria.IR.Common.Local
+Oria/Proofs/ANFScoped.lean:meta import all Oria.IR.Tree.Definition
+Oria/Proofs/ANFScoped.lean:meta import all Oria.IR.Tree.Syntax
+Oria/Proofs/ClosedProgram.lean:meta import all Oria.IR.Program.Closed
+Oria/Proofs/ContOptimize.lean:import all Oria.Compiler.Optimize.Cont
+Oria/Proofs/ContOptimize.lean:import all Oria.IR.Cont.Definition
+Oria/Proofs/ContOptimize.lean:import all Oria.IR.Common.Scope
+Oria/Proofs/DP121Pretty.lean:import all Oria.IR.DP121.Syntax
+Oria/Proofs/DP121Pretty.lean:meta import all Oria.IR.DP121.Pretty
+Oria/Proofs/WordSemantics.lean:import all Oria.Proofs.DP121Semantics
+Oria/Proofs/WordSemantics.lean:meta import all Oria.Proofs.DP121Semantics
+Oria/Proofs/AllocatedArithmetic.lean:import all Oria.Proofs.DP121Semantics
+Oria/Proofs/AllocatedArithmetic.lean:meta import all Oria.Proofs.DP121Semantics
+Oria/Meta/Elab/Record.lean:meta import all Oria.Meta.Elab.Program.Internal
+Oria/Meta/Elab/Record.lean:meta import all Lean.Elab.StructInst
+Oria/Meta/Elab/Record.lean:private partial def construct (view : View) (fields : Array StructInst.FieldView)
+Oria/Language/Control.lean:import all Oria.Language.Builder
+Oria/Language/Builder.lean:import all Oria.Data.Sealed
+Oria/Language/Control.lean:import all Oria.Data.Sealed
+Oria/Language/Persistent.lean:import all Oria.Data.Sealed
+Oria/Nbt/Description.lean:import all Oria.Data.Sealed
+Oria/IR/Common/Nbt/Global.lean:import all Oria.Data.Sealed
+Oria/Language/NbtGlobal.lean:import all Oria.Data.Sealed
+Oria/Language/NbtGlobal.lean:import all Oria.IR.Common.Nbt.Global

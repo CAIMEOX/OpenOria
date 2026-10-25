@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+root="$PWD"
+run="$(mktemp -d "$root/.lake/lake-test.XXXXXX")"
+cp -R integration/lake/lakefile.toml integration/lake/lean-toolchain \
+  integration/lake/Game.lean integration/lake/Game "$run/"
+echo "Lake consumer acceptance artifacts: $run"
+lake env lean --run tests/LakeBuild.lean "$run"

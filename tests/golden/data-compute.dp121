@@ -1,0 +1,88 @@
+data/dctest/function/__oria/m1/b0.mcfunction
+execute store success score #s2 dctest.oria run data merge storage dctest:data {"root":{"n":-3.5d,"text":"abcdef","xs":[2,3],"obj":{"x":1},"drop":1b}}
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data get storage dctest:data
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data get storage dctest:data "root"."n"
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data get storage dctest:data "root"."n" 2
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data get storage dctest:data "root"."text"
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."copied" set from storage dctest:data "root"."obj"
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."slice" set string storage dctest:data "root"."text" 1 -1
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."suffix" set string storage dctest:data "root"."text" -2
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."as_text" set string storage dctest:data "root"."n"
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."xs" prepend value 1
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."xs" append value 4
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."xs" insert 2 value 9
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."ys" set value []
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."ys" append from storage dctest:data "root"."xs"[]
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."copied" merge value {"y":2}
+execute store success score #s2 dctest.oria run data remove storage dctest:data "root"."drop"
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data get storage dctest:data "root"."xs"
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+
+data/dctest/function/__oria/m10/b0.mcfunction
+execute store success score #s2 dctest.oria run compute default integer {"type":"minecraft:div","left":1,"right":0}
+
+data/dctest/function/__oria/m3/b0.mcfunction
+execute store success score #s2 dctest.oria run data merge entity @n[type=minecraft:armor_stand,tag=dctest] {"Invisible":1b}
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."entity" set from entity @n[type=minecraft:armor_stand,tag=dctest]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data get entity @n[type=minecraft:armor_stand,tag=dctest] "Invisible"
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run data modify block ~4 ~1 ~0 "CustomName" set value {"text":"Oria"}
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."block" set from block ~4 ~1 ~0 "CustomName"
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute entity @n[type=minecraft:armor_stand,tag=dctest] integer {"type":"minecraft:score","target":{"type":"minecraft:context","target":"target_entity"},"score":"dctest.oria"}
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute block ~4 ~1 ~0 integer {"type":"minecraft:constant","value":6}
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+
+data/dctest/function/__oria/m5/b0.mcfunction
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[1]
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[1]
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+
+data/dctest/function/__oria/m5/b2/i0/macro.mcfunction
+$return run compute default integer {"type":"minecraft:add","inputs":[$(p0),10]}
+
+data/dctest/function/__oria/m5/b4/i0/macro.mcfunction
+$return run compute default integer {"type":"minecraft:div","left":$(p0),"right":0}
+
+data/dctest/function/__oria/m5/b5/i0/macro.mcfunction
+$return run compute default integer {"type":"minecraft:add","inputs":[$(p0),2147483647]}
+
+data/dctest/function/__oria/m5/b6/i0/macro.mcfunction
+$return run compute default float {"type":"minecraft:sqrt","input":{"type":"minecraft:from_int","input":$(p0)}}
+
+data/dctest/function/__oria/m5/b8/i0/macro.mcfunction
+$return run data modify storage dctest:data "root"."xs" insert $(p0) value 7
+
+data/dctest/function/__oria/m6/b0.mcfunction
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+
+data/dctest/function/__oria/m6/b0/i0/macro.mcfunction
+$return run data modify storage dctest:data "root"."mixed" set value {"text":"\u0024(literal)","n":$(p0)}
+
+data/dctest/function/__oria/m8/b0.mcfunction
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute default integer {"type":"minecraft:add","inputs":[2,3,4]}
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute default integer {"type":"minecraft:div","left":-7,"right":2}
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute default float {"type":"minecraft:constant","value":-3.5d}
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute default float {"type":"minecraft:constant","value":-3.5d} 2
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run compute default integer oria_test:nine
+data modify storage dctest:runtime "macro"."p0" set from storage dctest:runtime "stack"[-1]."locals"[0]
+execute store success score #s2 dctest.oria run data modify storage dctest:data "root"."integer" set compute default integer {"type":"minecraft:constant","value":12}
+data modify storage dctest:data "root"."float" set compute default float {"type":"minecraft:constant","value":3.5d}
+
+data/dctest/function/__oria/m9/b0.mcfunction
+compute default integer {"type":"minecraft:div","left":1,"right":0}
+data modify storage dctest:data "root"."computed_default" set compute default integer {"type":"minecraft:div","left":1,"right":0}
+data remove storage dctest:data "root"."absent"
+execute store success score #s2 dctest.oria run execute store result score #s3 dctest.oria run data modify storage dctest:data "root"."integer" set value 12

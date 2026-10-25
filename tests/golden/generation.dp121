@@ -1,0 +1,147 @@
+data/generation/function/__oria/m0/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run fillbiome ~0 ~0 ~0 ~7 ~7 ~7 minecraft:plains replace minecraft:the_end
+
+data/generation/function/__oria/m0/b2.mcfunction
+data modify storage generation:runtime "macro"."p0" set from storage generation:runtime "stack"[-1]."locals"[0]
+
+data/generation/function/__oria/m1/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place structure minecraft:igloo ~80 ~0 ~0
+
+data/generation/function/__oria/m10/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch remove generation:lap
+
+data/generation/function/__oria/m11/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run fillbiome ~0 ~0 ~0 ~512 ~64 ~512 minecraft:plains
+
+data/generation/function/__oria/m12/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run fillbiome ~0 ~0 ~0 ~7 ~7 ~7 minecraft:desert replace #minecraft:is_overworld
+
+data/generation/function/__oria/m13/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint list
+
+data/generation/function/__oria/m14/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @s style set minecraft:bowtie
+
+data/generation/function/__oria/m15/b0.mcfunction
+data modify storage generation:runtime "macro"."p0" set from storage generation:runtime "stack"[-1]."locals"[0]
+data modify storage generation:runtime "macro"."p1" set from storage generation:runtime "stack"[-1]."locals"[0]
+
+data/generation/function/__oria/m15/b2/i0/macro.mcfunction
+$return run place template generation:template ~0 ~0 ~0 none none $(p0) $(p1)
+
+data/generation/function/__oria/m16/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @s color red
+
+data/generation/function/__oria/m17/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @s color reset
+
+data/generation/function/__oria/m18/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 180 none 1 0
+
+data/generation/function/__oria/m19/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 clockwise_90 none 1 0
+
+data/generation/function/__oria/m2/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch query generation:lap 0.5
+
+data/generation/function/__oria/m20/b0.mcfunction
+data modify storage generation:runtime "macro"."p0" set from storage generation:runtime "stack"[-1]."locals"[0]
+
+data/generation/function/__oria/m20/b2/i0/macro.mcfunction
+$return run place feature generation:gold ~$(p0) ~0 ~0
+
+data/generation/function/__oria/m21/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch restart generation:lap
+
+data/generation/function/__oria/m22/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place feature generation:gold ~0 ~0 ~0
+
+data/generation/function/__oria/m23/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 none none 1 0 strict
+
+data/generation/function/__oria/m24/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place feature {"type":"minecraft:simple_block","to_place":{"id":"minecraft:dead_bush"}} ~0 ~0 ~0
+
+data/generation/function/__oria/m25/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch query generation:lap -1000
+
+data/generation/function/__oria/m26/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @e[tag=generation.absent,limit=1] color red
+
+data/generation/function/__oria/m27/b0.mcfunction
+data modify storage generation:runtime "macro"."p0" set from storage generation:runtime "stack"[-1]."locals"[0]
+
+data/generation/function/__oria/m27/b2/i0/macro.mcfunction
+$return run place jigsaw generation:pool generation:start $(p0) ~8 ~0 ~0
+
+data/generation/function/__oria/m28/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @s color hex f0A
+
+data/generation/function/__oria/m29/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 none none 0.5 123
+
+data/generation/function/__oria/m3/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch query generation:lap 1000
+
+data/generation/function/__oria/m30/b0.mcfunction
+data modify storage generation:runtime "macro"."p0" set from storage generation:runtime "stack"[-1]."locals"[0]
+
+data/generation/function/__oria/m30/b2/i0/macro.mcfunction
+$return run fillbiome ~0 ~0 ~0 ~$(p0) ~7 ~7 minecraft:savanna
+
+data/generation/function/__oria/m31/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:absent ~0 ~0 ~0 none none 1 0
+
+data/generation/function/__oria/m32/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @s color hex 6495ED
+
+data/generation/function/__oria/m33/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place jigsaw generation:pool generation:start 1 ~8 ~0 ~0
+
+data/generation/function/__oria/m34/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run fillbiome ~0 ~0 ~0 ~7 ~7 ~7 minecraft:forest replace minecraft:plains
+
+data/generation/function/__oria/m35/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch query generation:lap 1
+
+data/generation/function/__oria/m36/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 none none 1 0
+
+data/generation/function/__oria/m37/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run fillbiome ~1 ~1 ~1 ~2 ~2 ~2 minecraft:desert
+
+data/generation/function/__oria/m38/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch query generation:lap 0
+
+data/generation/function/__oria/m39/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 none none 0 123
+
+data/generation/function/__oria/m4/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run stopwatch create generation:lap
+
+data/generation/function/__oria/m40/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run waypoint modify @s style reset
+
+data/generation/function/__oria/m41/b0.mcfunction
+data modify storage generation:runtime "macro"."p0" set from storage generation:runtime "stack"[-1]."locals"[0]
+
+data/generation/function/__oria/m41/b2/i0/macro.mcfunction
+$return run stopwatch query generation:lap $(p0)
+
+data/generation/function/__oria/m42/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 none front_back 1 0
+
+data/generation/function/__oria/m43/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 counterclockwise_90 none 1 0
+
+data/generation/function/__oria/m5/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place feature {"type":"minecraft:simple_block","to_place":{"id":"minecraft:diamond_block"}} ~1 ~0 ~0
+
+data/generation/function/__oria/m6/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run fillbiome ~0 ~0 ~0 ~7 ~7 ~7 minecraft:plains
+
+data/generation/function/__oria/m7/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place template generation:template ~0 ~0 ~0 none left_right 1 0
+
+data/generation/function/__oria/m8/b0.mcfunction
+execute store success score #s2 generation.oria run execute store result score #s3 generation.oria run place jigsaw generation:pool generation:absent 1 ~8 ~0 ~0

@@ -1,0 +1,113 @@
+data/utility/function/__oria/m0/b0.mcfunction
+data modify storage utility:runtime "macro"."p0" set from storage utility:runtime "stack"[-1]."locals"[0]
+
+data/utility/function/__oria/m0/b2/i0/macro.mcfunction
+$return run say Round $(p0)
+
+data/utility/function/__oria/m0/b3.mcfunction
+data modify storage utility:runtime "macro"."p0" set from storage utility:runtime "stack"[-1]."locals"[0]
+
+data/utility/function/__oria/m1/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate poi #utility:meeting
+
+data/utility/function/__oria/m10/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run msg @a[tag=utility.absent] Nobody.
+
+data/utility/function/__oria/m11/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run me waves
+
+data/utility/function/__oria/m12/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run msg @a Everyone ready.
+
+data/utility/function/__oria/m13/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate biome minecraft:plains
+
+data/utility/function/__oria/m14/b0.mcfunction
+data modify storage utility:runtime "macro"."p0" set from storage utility:runtime "stack"[-1]."locals"[0]
+
+data/utility/function/__oria/m14/b2/i0/macro.mcfunction
+$return run scoreboard players add #utility utility.scores $(p0)
+
+data/utility/function/__oria/m15/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run seed
+
+data/utility/function/__oria/m16/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add #overflow utility.scores 1
+
+data/utility/function/__oria/m17/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run msg @s Private message.
+
+data/utility/function/__oria/m18/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run list
+
+data/utility/function/__oria/m19/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players remove @a utility.scores 1
+
+data/utility/function/__oria/m2/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate biome #utility:biomes
+
+data/utility/function/__oria/m20/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run teammsg Team ready.
+
+data/utility/function/__oria/m21/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate structure minecraft:village_plains
+
+data/utility/function/__oria/m22/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add @a utility.scores 2
+
+data/utility/function/__oria/m23/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run say Hello @s score 7
+
+data/utility/function/__oria/m24/b0.mcfunction
+data modify storage utility:runtime "macro"."p0" set from storage utility:runtime "stack"[-1]."locals"[0]
+
+data/utility/function/__oria/m24/b2/i0/macro.mcfunction
+$return run scoreboard players remove #utility utility.scores $(p0)
+
+data/utility/function/__oria/m25/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add #utility utility.scores 2
+
+data/utility/function/__oria/m26/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players remove #utility utility.scores 5
+
+data/utility/function/__oria/m27/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add @a[tag=utility.absent] utility.scores 1
+
+data/utility/function/__oria/m28/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate structure utility:absent
+
+data/utility/function/__oria/m29/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run say Round ready.
+
+data/utility/function/__oria/m30/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run version
+
+data/utility/function/__oria/m31/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run say Native @s
+
+data/utility/function/__oria/m32/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run list uuids
+
+data/utility/function/__oria/m33/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate poi minecraft:meeting
+
+data/utility/function/__oria/m34/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add * utility.scores 1
+
+data/utility/function/__oria/m4/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players remove #overflow utility.scores 1
+
+data/utility/function/__oria/m5/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add #utility utility.scores 0
+
+data/utility/function/__oria/m6/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate poi #utility:empty
+
+data/utility/function/__oria/m7/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run scoreboard players add #utility utility.absent 1
+
+data/utility/function/__oria/m8/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run locate structure #utility:empty
+
+data/utility/function/__oria/m9/b0.mcfunction
+execute store success score #s2 utility.oria run execute store result score #s3 utility.oria run say @a [distance=..1]

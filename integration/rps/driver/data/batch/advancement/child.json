@@ -1,0 +1,4 @@
+{
+  "parent": "batch:root",
+  "criteria": { "c": { "trigger": "minecraft:impossible" } }
+}
